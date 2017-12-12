@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchPosts, logoutUser, getPostDetails, addNote } from '../actions';
+import { fetchPosts, logoutUser, showModal, getPostDetails, addNote, multiDelete } from '../actions';
 import PostCard from './postCard';
 import Loader from './loading';
 import Header from './header';
@@ -15,7 +15,6 @@ class PostsList extends Component {
 
   componentWillMount() {
     if (this.props.authenticated) {
-      // let page = localStorage.getItem('currentState');
       this.props.fetchPosts();
     }
     window.scroll(0,0);
@@ -28,6 +27,16 @@ class PostsList extends Component {
   componentWillUpdate(nextProps) {
     if (!nextProps.authenticated) {
       this.context.router.push('/login');
+    }
+  }
+
+  renderMultiDeleteButton(){
+    if(this.props.showMultiDelete > 0){
+      return(
+        <button type="button" className="multi-delete-button"
+          onClick={() => this.props.showModal('multiDelete',this.props.multiselect)}
+          >Delete Selected Notes</button>
+      )
     }
   }
 
@@ -71,6 +80,7 @@ class PostsList extends Component {
           </div>
         </div>
         <AddNoteFab />
+        {this.renderMultiDeleteButton()}
       </div>
     );
   }
@@ -80,7 +90,11 @@ function mapStateToProps(state) {
   const posts = _.map(state.post.posts, (val, uniqueid) => {
     return { ...val, uniqueid };
   });
-  return { posts, loading: state.post.loading };
+  return { 
+    posts, 
+    loading: state.post.loading, 
+    multiselect: state.post.selectedPosts,
+    showMultiDelete: state.post.showMultiDelete };
 }
 
-export default connect(mapStateToProps, { fetchPosts, logoutUser, getPostDetails })(PostsList);
+export default connect(mapStateToProps, { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete })(PostsList);

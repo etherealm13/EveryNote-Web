@@ -46,6 +46,7 @@ export const EDIT_IN_PROGRESS = 'EDIT_IN_PROGRESS';
 export const EDIT_NOTE_SUCCESS = 'EDIT_NOTE_SUCCESS';
 export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const DELETE_NOTE = 'DELETE_NOTE';
+export const NOTE_SELECTED = 'NOTE_SELECTED';
 
 // Fetch Post
 export const FETCH_POSTS = 'FETCH_POSTS';
