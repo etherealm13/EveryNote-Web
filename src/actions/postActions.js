@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { hashHistory } from 'react-router';
 import {
+  FORM_RESET,
   TITLE_CHANGED,
   TITLE_UPDATED,
   DESCRIPTION_CHANGED,
@@ -17,7 +18,8 @@ import {
   EDIT_NOTE_SUCCESS,
   UPDATE_NOTE,
   UPDATE_NOTE_SUCCESS,
-  DELETE_NOTE
+  DELETE_NOTE,
+  NOTE_SELECTED
 } from './types';
 
 export function titleChanged(text) {
@@ -143,5 +145,32 @@ export function deleteNote(id) {
         hashHistory.push('/posts');
         fetchPosts();
       });
+  };
+}
+
+export function multiDelete(data){
+  const user = firebase.auth().currentUser;
+  return () => {
+    for(let i in data){
+      if(data[i]){
+        data[i] = null;
+      }else{
+        delete data[i];
+      }
+    }
+    firebase.database().ref(`users/${user.uid}/posts/`).update(data)
+    .then(() => {
+      hashHistory.push('/');
+      return {
+        type: FORM_RESET
+      };
+    })
+  }
+}
+
+export function multiselect(id){
+  return {
+    type: NOTE_SELECTED,
+    payload: id
   };
 }
