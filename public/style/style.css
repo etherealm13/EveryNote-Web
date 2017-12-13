@@ -43,6 +43,10 @@ body{
   color: #009688;
 }
 
+.todo-brand{
+  padding-left: 6px;
+}
+
 img.logo{
   margin-left: 43%;
 }
@@ -298,6 +302,10 @@ img.logo{
   font-weight: bold;
   font-family: Roboto;
   color: #009688 !important;
+}
+
+.navbar-brand.active{
+  text-decoration: underline;
 }
 .navbar-btn-wrapper {
     padding: 10px 15px;
@@ -592,6 +600,11 @@ img.logo{
     padding-top: 10px;
   }
 
+
+  .navbar-brand{
+    font-size: 20px !important;
+  }
+
   .post-card-wrapper{
     text-align: center;
     margin: 20px 20px;
@@ -639,6 +652,14 @@ img.logo{
 @media screen and (min-device-width: 320px ) and (max-device-width: 480px) {
   body {
     padding-top: 10px;
+  }
+
+  .navbar-brand{
+    font-size: 20px !important;
+    padding: 15px 5px;
+  }
+  .navbar-brand.todo-brand{
+    padding: 15px 5px 0 0;
   }
   
   .multi-delete-button{    

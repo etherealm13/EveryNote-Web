@@ -19,14 +19,18 @@ class Header extends Component {
 		<nav className="navbar navbar-default navbar-fixed-top">
 	      <div className="container">
 	        <div className="navbar-header">
-	          	<Link to="/posts" className="navbar-brand">
+	          	<Link to="/posts" activeClassName="active" className="navbar-brand">
 	          	<img alt="logo" className="nav-logo" src={imgSrc} />
-	          	EveryNote</Link>
+	          	Every(Note / </Link>
+	          	<Link to="/todos" activeClassName="active" className="navbar-brand todo-brand">
+	          	Todos)</Link>
+	          	
         		<div className="visible-xs-inline-block hidden-sm hidden-md hidden-lg pull-right">
 		        	<form className="navbar-btn-wrapper">
 				        <button type="button" className="btn btn-default gradient-bg"
 				        onClick={() => this.props.showModal('logout')}>
-		            	Logout
+		            	<span className="glyphicon glyphicon-user">
+		            	</span>
 		            	</button>
 				    </form>
 		        </div>
