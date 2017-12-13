@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { hashHistory } from 'react-router';
 import {
+  FORM_RESET,
   TITLE_CHANGED,
   TITLE_UPDATED,
   DESCRIPTION_CHANGED,
@@ -12,12 +13,10 @@ import {
   FETCH_POSTS_SUCCESS,
   GET_POST_DETAILS,
   GET_POST_DETAILS_SUCCESS,
-  EDIT_NOTE,
   EDIT_IN_PROGRESS,
-  EDIT_NOTE_SUCCESS,
   UPDATE_NOTE,
   UPDATE_NOTE_SUCCESS,
-  DELETE_NOTE
+  NOTE_SELECTED
 } from './types';
 
 export function titleChanged(text) {
@@ -101,6 +100,7 @@ export function fetchPosts() {
       return firebase.database().ref(`/users/${currentUser.uid}/posts`)
       .once('value', snapshot => {
         dispatch({ type: FETCH_POSTS_SUCCESS, payload: snapshot.val() });
+        resetMultiSelect(snapshot.val());
       });
     };
   }
@@ -116,14 +116,13 @@ export function getPostDetails(id, number) {
     dispatch({ type: GET_POST_DETAILS });
     return firebase.database().ref(`/users/${currentUser.uid}/posts/${id}`)
     .on('value', snapshot => {
-      let username = (snapshot.val() && snapshot.val().title);
+      // let username = (snapshot.val() && snapshot.val().title);
       dispatch({ type: GET_POST_DETAILS_SUCCESS, payload: snapshot.val(), id: id, number: number  });
       hashHistory.push(`/posts/${id}`);
       // this.context.router.push(`/posts/${this.props.post.uniqueid}`);
     });
   };
 }
-
 
 export function editNote(post) {
   return (dispatch) => {
@@ -144,4 +143,43 @@ export function deleteNote(id) {
         fetchPosts();
       });
   };
+}
+
+export function multiDelete(data){
+  const user = firebase.auth().currentUser;
+  return () => {
+    for(let i in data){
+      if(data[i]){
+        data[i] = null;
+      }else{
+        delete data[i];
+      }
+    }
+    firebase.database().ref(`users/${user.uid}/posts/`).update(data)
+    .then(() => {
+      hashHistory.push('/');
+      return {
+        type: FORM_RESET
+      };
+    })
+  }
+}
+
+export function multiselect(id){
+  return {
+    type: NOTE_SELECTED,
+    payload: id
+  };
+}
+
+export function resetMultiSelect(data){
+  if(data){
+    return () => {
+      for(let i in data){
+        delete data[i];
+      }
+    }
+  }else{
+    return () => {}
+  }
 }

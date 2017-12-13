@@ -5,10 +5,6 @@ import { showModal } from '../actions/index';
 const imgSrc = '/assets/icon.png';
 
 class Header extends Component {
-	constructor(props) {
-    	super(props);
-	}
-
 	loadUser(){
 		return (
 			<button type="button" className="btn btn-default"
@@ -24,7 +20,7 @@ class Header extends Component {
 	      <div className="container">
 	        <div className="navbar-header">
 	          	<Link to="/posts" className="navbar-brand">
-	          	<img className="nav-logo" src={imgSrc} />
+	          	<img alt="logo" className="nav-logo" src={imgSrc} />
 	          	EveryNote</Link>
         		<div className="visible-xs-inline-block hidden-sm hidden-md hidden-lg pull-right">
 		        	<form className="navbar-btn-wrapper">

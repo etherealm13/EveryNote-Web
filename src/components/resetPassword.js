@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { newPasswordChanged, confirmPasswordChanged, setNewPassword, logoutUser, showError } from '../actions/index';
 
 class ResetPassword extends Component {

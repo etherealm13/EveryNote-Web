@@ -1,8 +1,6 @@
 import {
   MODAL_SHOW,
-  MODAL_HIDE,
-  LOADING,
-  FORM_RESET
+  MODAL_HIDE
 } from './types';
 
 export function showModal(type,data) {

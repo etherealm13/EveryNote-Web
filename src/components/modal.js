@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import { hideModal, deleteNote, getPostDetails, fetchPosts, logoutUser } from '../actions/index';
+import { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser } from '../actions/index';
 
 class CustomModal extends Component{
 	static contextTypes = {
@@ -14,6 +14,12 @@ class CustomModal extends Component{
 		this.props.deleteNote(this.props.modal.data);
 		this.hideModalHandler();
 	}
+
+	multiDeleteHandler(){
+		this.props.multiDelete(this.props.modal.data);
+		this.hideModalHandler();
+	}
+
 	cancelUpdateHandler(){
 	    this.props.getPostDetails(this.props.modal.data);
 		this.hideModalHandler();
@@ -32,12 +38,11 @@ class CustomModal extends Component{
 			case 'delete': 
 				return (
 					<ReactModal
-			              isOpen={this.props.modal.modalShow}
-			              contentLabel="Modal"
-			              // onRequestClose={() => this.props.hideModal()}
-			              style={customStyle}
-			              contentLabel="Modal"
-			            >
+		              	isOpen={this.props.modal.modalShow}
+		              	contentLabel="Modal"
+		              	// onRequestClose={() => this.props.hideModal()}
+		              	style={customStyle}
+			        >
 			            <div className="popup-content">
 					  		<div className="popup-body">
 								<h3>Delete Note</h3>
@@ -59,12 +64,39 @@ class CustomModal extends Component{
 					  	</div>
 			        </ReactModal>
 				)
-			break;
+			case 'multiDelete': 
+				return (
+					<ReactModal
+			              isOpen={this.props.modal.modalShow}
+			              contentLabel="Modal"
+			              // onRequestClose={() => this.props.hideModal()}
+			              style={customStyle}
+			            >
+			            <div className="popup-content">
+					  		<div className="popup-body">
+								<h3>Delete Selected Notes</h3>
+								<p>Deleted data cannot be recovered.
+								Do you want to continue ?</p>
+						  	</div>
+					  		<div className="popup-footer">
+						  		<div className="btn-wrapper">
+					              	<button type="button" className="btn btn-success gradient-bg"
+					              	onClick = {this.multiDeleteHandler.bind(this)} >
+					              	Yes, Delete it
+					              	</button>
+					              	<button type="button" className="btn btn-default"
+					              	onClick = {this.hideModalHandler.bind(this)} >
+					              	Cancel
+					              	</button>
+							  	</div>
+						  	</div>
+					  	</div>
+			        </ReactModal>
+				)
 			case 'cancel': 
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						contentLabel="Modal"
 						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
@@ -90,12 +122,10 @@ class CustomModal extends Component{
 					  	</div>
 			        </ReactModal>
 				)
-			break;
 			case 'cancelAddForm': 
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						contentLabel="Modal"
 						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
@@ -121,12 +151,10 @@ class CustomModal extends Component{
 					  	</div>
 			        </ReactModal>
 				)
-			break;
 			case 'logout': 
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						contentLabel="Modal"
 						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
@@ -140,7 +168,7 @@ class CustomModal extends Component{
 					  			<div className="btn-wrapper">
 					              	<button type="button" className="btn btn-success gradient-bg"
 					              	onClick = {this.logoutHandler.bind(this)} >
-					              	Yes
+					              	Yes, Logout!
 					              	</button>
 					              	<button type="button" className="btn btn-default"
 					              	onClick = {this.hideModalHandler.bind(this)} >
@@ -151,7 +179,6 @@ class CustomModal extends Component{
 					  	</div>
 			        </ReactModal>
 				)
-			break;
 			default:
 				return false;
 		}
@@ -180,7 +207,7 @@ const customStyle = {
   },
   content : {
     position                   : 'absolute',
-    top                        : '16rem',
+    top                        : '20rem',
     left                       : '10%',
     right                      : '10%',
     bottom                      : '',
@@ -199,10 +226,10 @@ const customStyle = {
 
 function mapStateToProps(state) {
   if(state.post.postDetail != null){  
-    const { title, description, dateStamp } = state.post.postDetail;
+    // const { title, description, dateStamp } = state.post.postDetail;
     return { post: state.post.postDetail,  modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
   }
   return { post: state.post, modal: state.modal, editing: state.post.editing, uid: state.post.postId };
 }
 
-export default connect(mapStateToProps, { hideModal, deleteNote, getPostDetails, fetchPosts, logoutUser })(CustomModal);
+export default connect(mapStateToProps, { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser })(CustomModal);

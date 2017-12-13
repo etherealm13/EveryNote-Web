@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import firebase from 'firebase';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { verifyEmail, logoutUser } from '../actions/index';
 import CustomModal from './modal';
@@ -34,7 +34,7 @@ class App extends Component {
         let actionCode = this.getParameterByName("oobCode");
 
         // (Optional) Get the API key from the query parameter.
-        let apiKey = this.getParameterByName("apiKey");
+        // let apiKey = this.getParameterByName("apiKey");
 
         // (Optional) Get the continue URL from the query parameter if available.
         let continueUrl = this.getParameterByName("continueUrl");
@@ -78,7 +78,7 @@ class App extends Component {
 
     getParameterByName(name, url) {
         if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
+        name = name.replace(/[[\]]/g, "\\$&");
         var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
             results = regex.exec(url);
         if (!results) return null;
@@ -100,7 +100,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   if(state.post.postDetail != null){  
-    const { title, description, dateStamp } = state.post.postDetail;
+    // const { title, description, dateStamp } = state.post.postDetail;
     return { post: state.post.postDetail,  modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
   }
   return { post: state.post, modalShow: state.modal.modalShow, editing: state.post.editing, uid: state.post.postId };

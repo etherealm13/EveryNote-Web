@@ -50,7 +50,7 @@ class ResetPasswordRequested extends Component {
     return (
       <div className="login-page">
         <form className="form-signin" onSubmit={this.handleFormSubmit.bind(this)}>
-          <img className="logo" src="/assets/icon.png" />
+          <img alt="logo" className="logo" src="/assets/icon.png" />
           <h2 className="form-signin-heading">EveryNote</h2>
           <h5 className="error">{this.props.error}</h5>
           <label htmlFor="inputEmail" className="sr-only">Email address</label>

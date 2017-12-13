@@ -6,7 +6,6 @@ import {
   ADD_NOTE,
   ADD_NOTE_SUCCESS,
   ADD_NOTE_FAIL,
-  DELETE_NOTE,
   EDIT_NOTE,
   EDIT_IN_PROGRESS,
   EDIT_NOTE_SUCCESS,
@@ -17,6 +16,7 @@ import {
   FETCH_POSTS_SUCCESS,
   GET_POST_DETAILS,
   GET_POST_DETAILS_SUCCESS,
+  NOTE_SELECTED,
   FORM_RESET
 } from '../actions/types';
 
@@ -29,7 +29,9 @@ const INITIAL_STATE = {
   loading: false,
   editing: false,
   posts: {},
-  postDetail: {}
+  postDetail: {},
+  selectedPosts: {},
+  showMultiDelete: 0
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -70,6 +72,15 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case UPDATE_NOTE_SUCCESS:
       return { ...state, ...INITIAL_STATE, postDetail: action.payload };
+    case NOTE_SELECTED:
+      if(state.selectedPosts[action.payload]){
+        delete state.selectedPosts[action.payload]
+        state.showMultiDelete--;
+      }else{
+        state.selectedPosts[action.payload] = true;
+        state.showMultiDelete++;
+      }
+      return { ...state };  
     default:
     return state;
   }

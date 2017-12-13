@@ -20,7 +20,7 @@ import ResetPasswordMessage from './components/resetPasswordMessage';
 import ResetPasswordRequested from './components/resetPasswordRequested';
 import VerifyUser from './components/verifyUser';
 import VerifyEmail from './components/verifyEmail';
-import NewUser from './components/newUser';
+// import NewUser from './components/newUser';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 export default class AddNoteFab extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	addNote() {
 		if(!this.props.noAdd){	
 			return(

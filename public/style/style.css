@@ -13,10 +13,34 @@ body {
 body{
   background-color: #f7f9f7;
   /*background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23eef0d6' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
-  background-image: url("../assets/bg.webp");
+  /*background-image: url("data:image/svg+xml,<svg width='42' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg viewBox='0 0 42 44' preserveAspectRatio='xMidYMid meet'> <g transform='translate(0.000000,600.000000) scale(0.100000,-0.100000)'fill='#000000' stroke='none'></g></svg>");*/
+  background-image: url("../assets/bg.jpg");
 }
 #entry{
   padding-bottom: 2em;
+}
+
+.inline-block-div{
+    display: inline-block;
+}
+
+.clear-both{
+  clear: both;
+}
+
+.checkbox-div{
+  padding: 7px 5px 0 0;
+  float: left;
+}
+
+.more-icon{
+  float: right;
+  color: #9e9e9e;
+  font-size: 12px;
+}
+
+.more-icon:hover{
+  color: #009688;
 }
 
 img.logo{
@@ -100,7 +124,7 @@ img.logo{
 }
 
 
-/*Footer code*/
+/*Footer code
 
 .page-footer{
   position:absolute;
@@ -214,7 +238,7 @@ img.logo{
 .lds-rolling div {
   -webkit-animation: lds-rolling 1.1s linear infinite;
   animation: lds-rolling 1.1s linear infinite;
-  top: 200px;
+  top: 180%;
   left: 100px;
 }
 .lds-rolling div:after {
@@ -228,23 +252,27 @@ img.logo{
   transform: translate(-60px, -60px) scale(0.6) translate(60px, 60px);
 }
 
-@media screen and (max-device-width: 319px) {
-  body {
-    padding-top: 10px;
-  }
+.multi-delete-button{
+  
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #009688; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 5px; /* Rounded borders */
+  padding: 10px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 10px; /* 30px from the bottom */
 }
 
-
-@media screen and (max-device-width: 480px) {
-  body {
-    padding-top: 10px;
-  }
-}
-
-@font-face {
-/*    font-family: foreverBrush;
-    src: url(font.otf);*/
-}
+/*@font-face {
+    font-family: foreverBrush;
+    src: url(font.otf);
+}*/
 
 .my-5{
   margin-top: 3rem;
@@ -412,6 +440,72 @@ img.logo{
   height: 5rem;
   padding: 0;
   color: #343435;
+  cursor: pointer;
+}
+
+
+.custom-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #fefefe;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #d5d5d5;
+}
+
+/* When the checkbox is checked, add a blue background */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #009688;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .post-description{
@@ -481,7 +575,100 @@ img.logo{
   margin-top: 20px;
 }
 
-@media screen and (max-device-width: 480px) {
+
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 10px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 10px; opacity: 1;}
+}
+
+
+@media screen and (max-device-width: 319px) {
+  body {
+    padding-top: 10px;
+  }
+
+  .post-card-wrapper{
+    text-align: center;
+    margin: 20px 20px;
+  }
+  
+  .post-card{
+    width: 120px;
+    margin: 0 10px 10px 10px;
+    box-shadow: 0 10px 14px 0 rgba(0,0,0,0.1),0 4px 11px 0px rgba(0,0,0,0.19) !important;
+  }
+  .post-list-page .btn{
+    font-size: 12px;
+  }
+  .add-note-fab{
+    bottom: 5rem;
+    right: 20px;
+  }
+  .add-note-fab .btn{
+    padding: 10px 12px 8px 13px;
+    font-size: 16px;
+    width: 40px;
+    height: 45px;
+    min-width: 45px;
+  }
+
+  .multi-delete-button{ 
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    min-width: 100px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #009688; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 5px; /* Rounded borders */
+    padding: 10px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 10; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 10px; /* 30px from the bottom */
+  }
+}
+
+
+
+@media screen and (min-device-width: 320px ) and (max-device-width: 480px) {
+  body {
+    padding-top: 10px;
+  }
+  
+  .multi-delete-button{    
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    min-width: 200px;
+    margin-left: -99px;
+    background-color: #009688;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: 5px;
+  }
+
+  @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;} 
+      to {bottom: 5px; opacity: 1;}
+  }
+
+  @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 5px; opacity: 1;}
+  }
+
   .post-card-wrapper{
     text-align: center;
     margin: 20px 20px;
@@ -506,8 +693,6 @@ img.logo{
     width: 130px;
     margin: 0 10px 10px 10px;
     height: 130px;
-    /*width: 165px;
-    margin: 0 15px 20px 15px;*/
     box-shadow: 0 10px 14px 0 rgba(0,0,0,0.1),0 4px 11px 0px rgba(0,0,0,0.19) !important;
   }
   .post-list-page .btn{
@@ -516,33 +701,10 @@ img.logo{
   .post-details-page .btn-warning{
     margin: 0 10px 0 5px;
   }
-}
 
-
-@media screen and (max-device-width: 319px) {
-  .post-card-wrapper{
-    text-align: center;
-    margin: 20px 20px;
-  }
-  .post-card{
-    width: 120px;
-    margin: 0 10px 10px 10px;
-/*    width: 165px;
-    margin: 0 15px 20px 15px;*/
-    box-shadow: 0 10px 14px 0 rgba(0,0,0,0.1),0 4px 11px 0px rgba(0,0,0,0.19) !important;
-  }
-  .post-list-page .btn{
+  .more-icon{
+    float: right;
+    color: #009688;
     font-size: 12px;
-  }
-  .add-note-fab{
-    bottom: 5rem;
-    right: 20px;
-  }
-  .add-note-fab .btn{
-    padding: 10px 12px 8px 13px;
-    font-size: 16px;
-    width: 40px;
-    height: 45px;
-    min-width: 45px;
   }
 }
