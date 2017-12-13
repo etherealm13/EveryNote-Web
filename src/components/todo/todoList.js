@@ -5,7 +5,13 @@ const Todo = () => {
   return (
   	<div className="">
   		<Header />
-		Sample Todo Data
+  		<div className="container my-5">
+          <div className="row">
+            <div className="list-wrapper">
+				Sample Todo Data
+            </div>
+          </div>
+        </div>
   	</div>
   );
 };

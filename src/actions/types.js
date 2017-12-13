@@ -1,6 +1,7 @@
 // Action Types
 
 //Authentication - login, signup
+
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const EMAIL_CHANGED = 'EMAIL_CHANGED';
@@ -30,6 +31,10 @@ export const EMAIL_LINK_SENT = 'EMAIL_LINK_SENT';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 export const LOADING = 'LOADING';
 
+
+// POSTS
+
+
 // Create Post
 export const TITLE_CHANGED = 'TITLE_CHANGED';
 export const TITLE_UPDATED = 'TITLE_UPDATED';
@@ -57,6 +62,26 @@ export const FETCH_POSTS_FAIL = 'FETCH_POSTS_FAIL';
 export const GET_POST_DETAILS = 'GET_POST_DETAILS';
 export const GET_POST_DETAILS_SUCCESS = 'GET_POST_DETAILS_SUCCESS';
 
+
+
+
 // Modal
 export const MODAL_SHOW = 'MODAL_SHOW';
-export const MODAL_HIDE= 'MODAL_HIDE';
+export const MODAL_HIDE = 'MODAL_HIDE';
+
+
+// TODOS
+
+export const FETCH_TODOS = 'FETCH_TODOS';
+export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
+export const TODO_TITLE_CHANGED = 'TODO_TITLE_CHANGED';
+export const TODO_TASK_TITLE_CHANGED = 'TODO_TASK_TITLE_CHANGED';
+export const ADD_TODO_TITLE = 'ADD_TODO_TITLE';
+export const ADD_TODO_TITLE_SUCCESS = 'ADD_TODO_TITLE_SUCCESS';
+export const ADD_TODO_TASK = 'ADD_TODO_TASK';
+export const ADD_TODO_TASK_SUCCESS = 'ADD_TODO_TASK_SUCCESS';
+export const COMPLETE_TODO_TASK = 'COMPLETE_TODO_TASK';
+export const DELETE_TODO = 'DELETE_TODO';
+export const EDIT_TODO_TASK = 'EDIT_TODO_TASK';
+
+

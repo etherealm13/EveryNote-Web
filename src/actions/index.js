@@ -1,3 +1,4 @@
 export * from './authActions';
-export * from './postActions';
+export * from './postsActions';
+export * from './todoActions';
 export * from './modalActions';
