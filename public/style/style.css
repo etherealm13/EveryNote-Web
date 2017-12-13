@@ -469,11 +469,12 @@ img.logo{
   height: 16px;
   width: 16px;
   background-color: #fefefe;
+  border: 1px solid #aaa;
 }
 
 /* On mouse-over, add a grey background color */
 .custom-checkbox:hover input ~ .checkmark {
-  background-color: #d5d5d5;
+  background-color: #eee;
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -495,8 +496,8 @@ img.logo{
 
 /* Style the checkmark/indicator */
 .custom-checkbox .checkmark:after {
-  left: 6px;
-  top: 2px;
+  left: 5px;
+  top: 1px;
   width: 5px;
   height: 10px;
   border: solid white;

@@ -66,14 +66,8 @@ class App extends Component {
     // Verify the password reset code is valid.
         if (code !== '') {
             this.props.verifyEmail(code);
-            // .then(() => {
-            //     this.context.router.push('/login');
-            //     this.props.logoutUser();
-            // });
         }
     }
-        
-
 
     getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -84,7 +78,6 @@ class App extends Component {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-
 
     render() {
         return (
@@ -97,11 +90,4 @@ class App extends Component {
 }
 
 
-function mapStateToProps(state) {
-  if(state.post.postDetail != null){
-    return { post: state.post.postDetail,  modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
-  }
-  return { post: state.post, modalShow: state.modal.modalShow, editing: state.post.editing, uid: state.post.postId };
-}
-
-export default connect(mapStateToProps, {verifyEmail, logoutUser})(App);
+export default connect(null, {verifyEmail, logoutUser})(App);

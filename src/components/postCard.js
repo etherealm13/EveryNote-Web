@@ -38,8 +38,8 @@ class PostCard extends Component {
             <p className="post-card-stamp">{this.filterDate()}</p>
           </div>
            <hr className="post-divider"/>
-          <div onClick={this.getPostDetails.bind(this)}>
-            <div className="post-card-description" title="Click to view details">
+          <div title="Click to view details" onClick={this.getPostDetails.bind(this)}>
+            <div className="post-card-description">
             {this.props.post.description}
             </div>
             <span className="more-icon glyphicon glyphicon-arrow-right">
