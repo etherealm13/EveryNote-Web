@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete, resetMultiSelect } from '../actions';
+import { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete, resetMultiSelect } from '../../actions';
 import PostCard from './postCard';
-import Loader from './loading';
-import Header from './header';
-import AddNoteFab from './addNoteFab';
+import Loader from '../common/loading';
+import Header from '../common/header';
+import AddNoteFab from '../common/addNoteFab';
 
 class PostsList extends Component {
   static contextTypes = {

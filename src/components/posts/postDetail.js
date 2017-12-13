@@ -3,10 +3,10 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import { deleteNote, editNote, showModal, updateNote, getPostDetails, titleUpdated, descriptionUpdated, resetForm } from '../actions/index';
-import Header from './header';
-import Loader from './loading';
-import AddNoteFab from './addNoteFab';
+import { deleteNote, editNote, showModal, updateNote, getPostDetails, titleUpdated, descriptionUpdated, resetForm } from '../../actions/index';
+import Header from '../common/header';
+import Loader from '../common/loading';
+import AddNoteFab from '../common/addNoteFab';
 
 class PostDetail extends Component {
   static contextTypes = {

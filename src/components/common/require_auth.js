@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { checkAuth } from '../actions/index';
+import { checkAuth } from '../../actions/index';
 
 export default function (ComposedComponent) {
   class Authentication extends Component {

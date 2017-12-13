@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { sendEmailLink } from '../actions/index';
+import { sendEmailLink } from '../../actions/index';
 
 class VerifyEmail extends Component {
 	componentDidMount(){

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser } from '../actions/index';
+import { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser } from '../../actions/index';
 
 class CustomModal extends Component{
 	static contextTypes = {

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { verifyEmail, logoutUser } from '../actions/index';
+import { verifyEmail, logoutUser } from '../../actions/index';
 import CustomModal from './modal';
 
 class App extends Component {

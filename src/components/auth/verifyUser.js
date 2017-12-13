@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import Loader from './loading';
-import { verifyPasswordCode } from '../actions/index';
+import Loader from '../common/loading';
+import { verifyPasswordCode } from '../../actions/index';
 
 class VerifyUser extends Component {
     static contextTypes = {

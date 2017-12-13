@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Loader from './loading';
-import { verifyEmail } from '../actions/index';
+import { verifyEmail } from '../../actions/index';
 
 class NewUser extends Component {
     static contextTypes = {

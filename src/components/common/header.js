@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { showModal } from '../actions/index';
+import { showModal } from '../../actions/index';
 const imgSrc = '/assets/icon.png';
 
 class Header extends Component {

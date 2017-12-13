@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { titleChanged, descriptionChanged, addNote, showModal, resetForm } from '../actions/index';
-import Header from './header';
+import { titleChanged, descriptionChanged, addNote, showModal, resetForm } from '../../actions/index';
+import Header from '../common/header';
 
 class PostForm extends Component {
   static contextTypes = {

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import Loader from './loading';
-import { emailChanged, resetForm, resetPassword } from '../actions/index';
+import Loader from '../common/loading';
+import { emailChanged, resetForm, resetPassword } from '../../actions/index';
 
 class ResetPasswordRequested extends Component {
   	static contextTypes = {

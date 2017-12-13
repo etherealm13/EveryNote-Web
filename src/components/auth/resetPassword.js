@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { newPasswordChanged, confirmPasswordChanged, setNewPassword, logoutUser, showError } from '../actions/index';
+import { newPasswordChanged, confirmPasswordChanged, setNewPassword, logoutUser, showError } from '../../actions/index';
 
 class ResetPassword extends Component {
   static contextTypes = {

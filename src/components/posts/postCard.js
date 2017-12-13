@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { getPostDetails, multiselect, resetMultiSelect } from '../actions';
+import { getPostDetails, multiselect, resetMultiSelect } from '../../actions';
 
 class PostCard extends Component {
   static contextTypes = {
