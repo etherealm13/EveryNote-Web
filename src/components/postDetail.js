@@ -170,8 +170,7 @@ class PostDetail extends Component {
 }
 
 function mapStateToProps(state) {
-  if(state.post.postDetail != null){  
-    // const { title, description, dateStamp } = state.post.postDetail;
+  if(state.post.postDetail != null){
     return { post: state.post.postDetail, loading: state.post.loading, modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
   }
   return { post: state.post, loading: state.post.loading, modalShow: state.modal.modalShow, editing: state.post.editing, uid: state.post.postId };

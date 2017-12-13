@@ -116,7 +116,6 @@ export function getPostDetails(id, number) {
     dispatch({ type: GET_POST_DETAILS });
     return firebase.database().ref(`/users/${currentUser.uid}/posts/${id}`)
     .on('value', snapshot => {
-      // let username = (snapshot.val() && snapshot.val().title);
       dispatch({ type: GET_POST_DETAILS_SUCCESS, payload: snapshot.val(), id: id, number: number  });
       hashHistory.push(`/posts/${id}`);
       // this.context.router.push(`/posts/${this.props.post.uniqueid}`);

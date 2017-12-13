@@ -124,8 +124,6 @@ img.logo{
 }
 
 
-/*Footer code
-
 .page-footer{
   position:absolute;
   height: 3em;
@@ -597,7 +595,7 @@ img.logo{
     text-align: center;
     margin: 20px 20px;
   }
-  
+ 
   .post-card{
     width: 120px;
     margin: 0 10px 10px 10px;
@@ -701,7 +699,6 @@ img.logo{
   .post-details-page .btn-warning{
     margin: 0 10px 0 5px;
   }
-
   .more-icon{
     float: right;
     color: #009688;

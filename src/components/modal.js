@@ -225,8 +225,7 @@ const customStyle = {
 
 
 function mapStateToProps(state) {
-  if(state.post.postDetail != null){  
-    // const { title, description, dateStamp } = state.post.postDetail;
+  if(state.post.postDetail != null){
     return { post: state.post.postDetail,  modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
   }
   return { post: state.post, modal: state.modal, editing: state.post.editing, uid: state.post.postId };

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import firebase from 'firebase';
-// import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { verifyEmail, logoutUser } from '../actions/index';
 import CustomModal from './modal';
@@ -99,8 +98,7 @@ class App extends Component {
 
 
 function mapStateToProps(state) {
-  if(state.post.postDetail != null){  
-    // const { title, description, dateStamp } = state.post.postDetail;
+  if(state.post.postDetail != null){
     return { post: state.post.postDetail,  modal: state.modal, editing: state.post.editing, uid: state.post.postId, number: state.post.postNumber };
   }
   return { post: state.post, modalShow: state.modal.modalShow, editing: state.post.editing, uid: state.post.postId };

@@ -34,7 +34,6 @@ module.exports = {
         loader: 'css-loader',
         options: { minimize: true }
       },
-      
       {
         test: /.(jpeg|jpg|png|woff(2)?|eot|ttf|svg|webp)(\?[a-z0-9=\.]+)?$/,
         loader: 'url-loader?limit=10000000!image-webpack-loader',

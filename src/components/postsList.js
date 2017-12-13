@@ -104,3 +104,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete, resetMultiSelect })(PostsList);
+
