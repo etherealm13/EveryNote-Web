@@ -29,8 +29,6 @@ import PostForm from './components/posts/postForm';
 // todo files
 import TodoList from './components/todo/todoList';
 
-
-
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);

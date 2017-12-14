@@ -733,14 +733,63 @@ img.logo{
 }
 
 .todo-component{
-  border: 1px solid #ccc;
-}
-
-.todo-component .table{
-  margin-bottom: 0;
+  border: 1px solid #e4e4e4;
+  margin-bottom: 20px;
 }
 
 .todo-component-header{
-  background: #cddc39;
-  padding: 5px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
 }
+
+.todo-component-header.urgent{
+  background: #f78c6a;
+}
+
+.todo-component-header.main{
+  background: #cddc39;
+}
+
+.todo-component-header h3{
+  margin: 0;
+}
+
+.todo-component .todo-task-list{
+  height: 425px;
+  overflow: auto;
+  display: block;
+  padding-left: 0px;
+  margin-bottom: 0;
+}
+
+.todo-component .todo-task-list li{
+  margin: 8px 0;
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.todo-component .todo-task-list li.urgent{
+  background: #f3cec2;
+}
+
+.todo-component .todo-task-list li.main{
+  background: #edf1c6;
+}
+
+.todo-component .todo-task-list li:last-child{
+  margin: 8px 0 0 0;
+}
+
+.todo-task-component{
+}
+
+.todo-task-component .checkbox-div{
+  padding: 0px 5px 0 0;
+}
+
+.add-task-form{
+  padding: 5px 0px;
+}
+

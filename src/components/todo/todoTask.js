@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TodoTask = () => {
+const TodoTask = (props) => {
   return (
-      <div className="">
+      <div className="todo-task-component">
         <div className="checkbox-div inline-block-div">
             <label className="custom-checkbox">
               <input type="checkbox" className="custom-control-input" />
@@ -10,9 +10,10 @@ const TodoTask = () => {
             </label>
           </div>
           <div>
-            Sample TodoComponent Data
+            <p>
+            {props.task}
+            </p>
           </div>
-
       </div>
   );
 };

@@ -4,7 +4,6 @@ import {
   FORM_RESET,
   FETCH_TODOS,
   FETCH_TODOS_SUCCESS,
-  TODO_TITLE_CHANGED,
   TODO_TASK_TITLE_CHANGED,
   ADD_TODO_TITLE,
   ADD_TODO_TITLE_SUCCESS,
@@ -15,55 +14,79 @@ import {
   EDIT_TODO_TASK
 } from './types';
 
-export function titleChanged(text) {
-  return {
-    type: TODO_TITLE_CHANGED,
-    payload: text
-  };
-}
 
-export function taskTitleChanged(text) {
+export function taskTitleChanged(text, type) {
   return {
     type: TODO_TASK_TITLE_CHANGED,
-    payload: text
+    payload: text,
+    titleType: type
   };
 }
 
 
-export function addTodo(title) {
-  const { currentUser } = firebase.auth();
-  console.log(title);
-  let tasks = ['kajdskajsd', 'asdsad'];
-  return (dispatch) => {
-    dispatch({ type: ADD_TODO_TITLE });
-    let dateStamp = new Date().toString();
-    return firebase.database().ref(`/users/${currentUser.uid}/todos`)
-    .push({ title, tasks: tasks, dateStamp: dateStamp })
-    .then(() => {
-      dispatch({ type: ADD_TODO_TITLE_SUCCESS });
-      hashHistory.push('/todos');
-    })
-    .catch((error) => {
-      // return addNoteFail(dispatch, error.message);
-    });
-  };
-}
+// export function addTodo(title) {
+//   const { currentUser } = firebase.auth();
+//   console.log(title);
+//   let tasks = ['kajdskajsd', 'asdsad'];
+//   return (dispatch) => {
+//     dispatch({ type: ADD_TODO_TITLE });
+//     let dateStamp = new Date().toString();
+//     return firebase.database().ref(`/users/${currentUser.uid}/todos`)
+//     .push({ title, tasks: tasks, dateStamp: dateStamp })
+//     .then(() => {
+//       dispatch({ type: ADD_TODO_TITLE_SUCCESS });
+//       hashHistory.push('/todos');
+//     })
+//     .catch((error) => {
+//       // return addNoteFail(dispatch, error.message);
+//     });
+//   };
+// }
 
-export function addTask(task, id = '') {
+export function addTask(task, type = '') {
   const { currentUser } = firebase.auth();
   return (dispatch) => {
     dispatch({ type: ADD_TODO_TASK });
-    return firebase.database().ref(`/users/${currentUser.uid}/todos/${id}/tasks`)
-    .push(task)
+    let dateStamp = new Date().toString();
+    return firebase.database().ref(`/users/${currentUser.uid}/todos/${type}/tasks`)
+    .push({ task, dateStamp })
     .then(() => {
       dispatch({ type: ADD_TODO_TASK_SUCCESS });
-      hashHistory.push('/todos');
+      fetchTodosWithType(type, currentUser.uid).then((res) => {
+        dispatch({ type: FETCH_TODOS_SUCCESS, payload: res.val() });
+      })
     })
     .catch((error) => {
       // return addNoteFail(dispatch, error.message);
     });
   };
 }
+
+export function fetchTodos() {
+    const { currentUser } = firebase.auth();
+    if(currentUser != null){
+      return (dispatch) => {
+        return firebase.database().ref(`/users/${currentUser.uid}/todos`)
+        .once('value', snapshot => {
+          dispatch({ type: FETCH_TODOS_SUCCESS, payload: snapshot.val()});
+        });
+      } 
+    }
+  return () => {};
+}
+
+
+export function fetchTodosWithType(type = '', id = '') {
+    return firebase.database().ref(`/users/${id}/todos`)
+    .once('value', snapshot => {
+      // console.log('here',snapshot.val());
+      return { 
+        type: FETCH_TODOS_SUCCESS, 
+        payload: snapshot.val() 
+      };
+      // resetMultiSelect(snapshot.val());
+    });
+  }
 
 // export function updateNote(post, id) {
 //   const { currentUser } = firebase.auth();
@@ -87,21 +110,6 @@ export function addTask(task, id = '') {
 //     type: ADD_NOTE_FAIL,
 //     payload: error
 //   });
-// }
-
-// export function fetchPosts() {
-//   const { currentUser } = firebase.auth();
-//   if(currentUser.emailVerified){
-//     return (dispatch) => {
-//       dispatch({ type: FETCH_TODOS });
-//       return firebase.database().ref(`/users/${currentUser.uid}/posts`)
-//       .once('value', snapshot => {
-//         dispatch({ type: FETCH_TODOS_SUCCESS, payload: snapshot.val() });
-//         resetMultiSelect(snapshot.val());
-//       });
-//     };
-//   }
-//   hashHistory.push('/verify-email');
 // }
 
 // export function editNote(post) {
