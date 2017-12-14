@@ -20,7 +20,7 @@ class LoginForm extends Component {
 
   componentWillUpdate(nextProps) {
       if (nextProps.authenticated) {
-        this.context.router.push('/posts');
+        this.context.router.push('/todos');
       }
   }
 

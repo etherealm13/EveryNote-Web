@@ -727,3 +727,20 @@ img.logo{
     font-size: 12px;
   }
 }
+
+.todo-component-wrapper{
+  margin: 0 auto;
+}
+
+.todo-component{
+  border: 1px solid #ccc;
+}
+
+.todo-component .table{
+  margin-bottom: 0;
+}
+
+.todo-component-header{
+  background: #cddc39;
+  padding: 5px;
+}
