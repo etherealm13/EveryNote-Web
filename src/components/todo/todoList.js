@@ -17,12 +17,19 @@ class TodoList extends Component {
   }
 
   renderList(){
+    let todos = [];
     let types = [
         {prop: 'mainTasks', name: 'Main', type: 'main'}, 
-        {prop: 'urgentTasks', name: 'Urgent', type: 'urgent'}
+        {prop: 'urgentTasks', name: 'Urgent', type: 'urgent'},
+        {prop: 'otherTasks', name: 'Others', type: 'others'}
       ];
     return types.map((field) => {
-        return <TodoComponent key={field.name} type={field.type} name={field.name} todo={this.props[field.prop]}/>
+        if(this.props[field.prop] == undefined){
+          todos = [];
+        }else{
+          todos = this.props[field.prop];
+        }
+        return <TodoComponent key={field.name} type={field.type} name={field.name} todo={todos}/>
     })
   }
 
@@ -40,28 +47,29 @@ class TodoList extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   let todos = state.todo.todos;
-  if(todos != undefined && todos.main != undefined && todos.urgent != undefined){
-    let mainTasks = _.map(todos.main.tasks, (val, uniqueid) => {
-      return { ...val, uniqueid };
-    });
-        
-    let urgentTasks = _.map(todos.urgent.tasks, (val, uniqueid) => {
-      return { ...val, uniqueid };
-    });
+  let mainTasks = [], urgentTasks = [], otherTasks = [];
+  if(todos != undefined){
+    if(todos.main != undefined){
+      mainTasks = _.map(todos.main.tasks, (val, uniqueid) => {
+        return { ...val, uniqueid };
+      });
+    }
 
-  // const mainTasks = _.map(state.todo.todos, (val, uniqueid) => {
-  //   return { ...val, uniqueid };
-  // });
-  // console.log(types);
-  // const todo = _.map(types, (val, uniqueid) => {
-  //   return { ...val, uniqueid };
-  // });
-  console.log('todo ',mainTasks, urgentTasks);
-  return { mainTasks, urgentTasks }
+    if(todos.urgent != undefined){
+      urgentTasks = _.map(todos.urgent.tasks, (val, uniqueid) => {
+        return { ...val, uniqueid };
+      });
+    }
+    
+    if(todos.others != undefined){
+      otherTasks = _.map(todos.others.tasks, (val, uniqueid) => {
+        return { ...val, uniqueid };
+      });
+    }
   }
-  return {}
+  return { mainTasks, urgentTasks, otherTasks }
 }
 
 export default connect(mapStateToProps, {

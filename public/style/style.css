@@ -751,12 +751,16 @@ img.logo{
   background: #cddc39;
 }
 
+.todo-component-header.others{
+  background: #58c1f1;
+}
+
 .todo-component-header h3{
   margin: 0;
 }
 
 .todo-component .todo-task-list{
-  height: 425px;
+  max-height: 425px;
   overflow: auto;
   display: block;
   padding-left: 0px;
@@ -776,6 +780,10 @@ img.logo{
 
 .todo-component .todo-task-list li.main{
   background: #edf1c6;
+}
+
+.todo-component .todo-task-list li.others{
+  background: #d4edf1;
 }
 
 .todo-component .todo-task-list li:last-child{

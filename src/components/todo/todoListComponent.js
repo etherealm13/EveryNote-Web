@@ -1,14 +1,17 @@
 import React from 'react';
+import _ from 'lodash';
 import Header from '../common/header';
 import Loader from '../common/loading';
 import TodoTask from './todoTask';
 import AddTaskForm from './addTaskForm';
 
 const renderTasksList = (props) => {
-  if(props.todo != undefined){
+  if(!_.isEmpty(props.todo) && props.todo.length > 0){
     return props.todo.map((i) => {
       return (
-        <li className={props.type} key={i.uniqueid}><TodoTask task={i.task} /></li>
+        <li className={props.type} key={i.uniqueid}>
+          <TodoTask task={i.task} />
+        </li>
       )
     })
   }

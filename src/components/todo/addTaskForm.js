@@ -8,10 +8,6 @@ class AddTaskForm extends Component {
     this.type= props.data;
   }
 
-  componentWillMount(){
-    // this.props.fetchTodos();
-  }
-
   onTitleChange(event) {
     this.props.taskTitleChanged(event.target.value, this.type);
   }
@@ -32,7 +28,7 @@ class AddTaskForm extends Component {
           className="form-control"
           placeholder="Add task"
           label="task"
-          value={this.props[this.type]}
+          value={this.props[this.type] || ''}
           onChange={this.onTitleChange.bind(this)}
           autoFocus
         />
@@ -58,6 +54,12 @@ function mapStateToProps(state, ownProps) {
       urgent : state.todo[ownProps.data]
     };
   }
+  if(ownProps.data == 'others'){
+    return {
+      others : state.todo[ownProps.data]
+    };
+  }
+  return {state}
 }
 
 export default connect(mapStateToProps, {
