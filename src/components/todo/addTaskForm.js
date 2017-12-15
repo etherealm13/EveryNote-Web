@@ -26,10 +26,11 @@ class AddTaskForm extends Component {
         <input
           type="text"
           className="form-control"
-          placeholder="Add task"
+          placeholder="Add task ( max 100 characters )"
           label="task"
           value={this.props[this.type] || ''}
           onChange={this.onTitleChange.bind(this)}
+          maxLength={100}
         />
         <span className="input-group-btn">
           <button className="btn btn-success" type="submit">

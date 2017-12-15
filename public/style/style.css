@@ -655,6 +655,7 @@ img.logo{
 
 .todo-item-text{
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 .todo-item-text.completed{
