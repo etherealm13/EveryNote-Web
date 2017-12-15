@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   FORM_RESET,
   FETCH_TODOS,
@@ -13,6 +14,7 @@ import {
 const INITIAL_STATE = {
   main: '',
   urgent: '',
+  others: '',
   loading: false,
   editing: false,
   todos: {}
@@ -22,20 +24,33 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     
     case FORM_RESET:
-      return { ...INITIAL_STATE };
+      return { ...INITIAL_STATE, todos: {...state.todos} };
     
     case TODO_TASK_TITLE_CHANGED:
       return { ...state, [action.titleType]: action.payload };
     
     case ADD_TODO_TASK:
-      return { ...state, loading: true };
-    
-    case ADD_TODO_TASK_SUCCESS:
-      return { ...INITIAL_STATE };
-    
-    case COMPLETE_TODO_TASK:
       return { ...state };
     
+    case ADD_TODO_TASK_SUCCESS:
+      return { ...state, todos: { 
+          ...state.todos, [action.payload.type]: { 
+            ...state.todos[action.payload.type], tasks: {
+              ...state.todos[action.payload.type].tasks, [action.payload.id]: {...action.payload.data} } 
+          } 
+        }
+      }
+    
+    case COMPLETE_TODO_TASK:
+      return { ...state, todos: { 
+          ...state.todos, [action.payload.type]: { 
+            ...state.todos[action.payload.type], tasks: {
+              ...state.todos[action.payload.type].tasks, [action.payload.taskData.uniqueid]: {...action.newData}
+            } 
+          } 
+        }
+      }
+
     case EDIT_TODO_TASK:
       return { ...state, loading: true };
     

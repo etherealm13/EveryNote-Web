@@ -30,7 +30,6 @@ class AddTaskForm extends Component {
           label="task"
           value={this.props[this.type] || ''}
           onChange={this.onTitleChange.bind(this)}
-          autoFocus
         />
         <span className="input-group-btn">
           <button className="btn btn-success" type="submit">

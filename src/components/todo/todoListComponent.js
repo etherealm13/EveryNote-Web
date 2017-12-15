@@ -10,13 +10,13 @@ const renderTasksList = (props) => {
     return props.todo.map((i) => {
       return (
         <li className={props.type} key={i.uniqueid}>
-          <TodoTask task={i.task} />
+          <TodoTask data={i} type={props.type} />
         </li>
       )
     })
   }
-  return <Loader />
 }
+
 const TodoComponent = (props) => {
   return (
     		<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">

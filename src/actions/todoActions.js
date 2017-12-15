@@ -23,38 +23,33 @@ export function taskTitleChanged(text, type) {
   };
 }
 
-
-// export function addTodo(title) {
-//   const { currentUser } = firebase.auth();
-//   console.log(title);
-//   let tasks = ['kajdskajsd', 'asdsad'];
-//   return (dispatch) => {
-//     dispatch({ type: ADD_TODO_TITLE });
-//     let dateStamp = new Date().toString();
-//     return firebase.database().ref(`/users/${currentUser.uid}/todos`)
-//     .push({ title, tasks: tasks, dateStamp: dateStamp })
-//     .then(() => {
-//       dispatch({ type: ADD_TODO_TITLE_SUCCESS });
-//       hashHistory.push('/todos');
-//     })
-//     .catch((error) => {
-//       // return addNoteFail(dispatch, error.message);
-//     });
-//   };
-// }
+export function changeTodoStatus(data) {
+    const { currentUser } = firebase.auth();
+    if(currentUser != null){
+      return (dispatch) => {
+        firebase.database().ref(`/users/${currentUser.uid}/todos/${data.type}/tasks/${data.taskData.uniqueid}/completed`)
+         .set(!data.taskData.completed);
+          let task = {...data.taskData, completed: !data.taskData.completed}
+          dispatch({ type: COMPLETE_TODO_TASK, payload: data, newData: task });
+      }
+    }
+  return () => {};
+}
 
 export function addTask(task, type = '') {
   const { currentUser } = firebase.auth();
   return (dispatch) => {
     dispatch({ type: ADD_TODO_TASK });
     let dateStamp = new Date().toString();
+    let data = { task, dateStamp, completed: false };
     return firebase.database().ref(`/users/${currentUser.uid}/todos/${type}/tasks`)
-    .push({ task, dateStamp })
-    .then(() => {
-      dispatch({ type: ADD_TODO_TASK_SUCCESS });
-      fetchTodosWithType(type, currentUser.uid).then((res) => {
-        dispatch({ type: FETCH_TODOS_SUCCESS, payload: res.val() });
-      })
+    .push(data)
+    .then((res) => {
+      dispatch({ type: FORM_RESET });
+      dispatch({ type: ADD_TODO_TASK_SUCCESS, payload: {task, type, id: res.key, data} });
+      // fetchTodosWithType(type, currentUser.uid).then((res) => {
+      //   dispatch({ type: FETCH_TODOS_SUCCESS, payload: res.val() });
+      // })
     })
     .catch((error) => {
       // return addNoteFail(dispatch, error.message);
@@ -79,12 +74,10 @@ export function fetchTodos() {
 export function fetchTodosWithType(type = '', id = '') {
     return firebase.database().ref(`/users/${id}/todos`)
     .once('value', snapshot => {
-      // console.log('here',snapshot.val());
       return { 
         type: FETCH_TODOS_SUCCESS, 
         payload: snapshot.val() 
       };
-      // resetMultiSelect(snapshot.val());
     });
   }
 

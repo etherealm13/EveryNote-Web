@@ -82,6 +82,6 @@ export default (state = INITIAL_STATE, action) => {
       }
       return { ...state };  
     default:
-    return state;
+    return {};
   }
 };
