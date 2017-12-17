@@ -46,7 +46,7 @@ class PostsList extends Component {
   }
 
   renderPost() {
-    if (!this.props.loading) {
+    if (!this.props.loading && this.props.loading != undefined) {
       if (this.props.posts.length) {
           let sortedPosts = this.props.posts.sort(function(a,b) {
               return new Date(b.dateStamp) - new Date(a.dateStamp) 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import Header from '../common/header';
-import Loader from '../common/loading';
 import TodoComponent from './todoListComponent';
 import { fetchTodos, deleteCompleted } from '../../actions/index';
 

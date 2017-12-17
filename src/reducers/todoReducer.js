@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   main: '',
   urgent: '',
   others: '',
-  loading: false,
+  loadingTodo: false,
   todos: {
     main: {
       tasks:{}
@@ -65,10 +65,10 @@ export default (state = INITIAL_STATE, action) => {
       }
 
     case EDIT_TODO_TASK:
-      return { ...state, loading: true };
+      return { ...state, loadingTodo: true };
     
     case FETCH_TODOS:
-      return { ...state, loading: true};
+      return { ...state, loadingTodo: true};
 
     case FETCH_TODOS_SUCCESS:
       return { ...state, ...INITIAL_STATE, todos: action.payload };

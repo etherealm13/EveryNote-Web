@@ -1,6 +1,6 @@
 {
-  "name": "everynote-todo-v0.0.1",
-  "version": "0.0.01",
+  "name": "everynote-todo-v1.0.0",
+  "version": "1.0.01",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
