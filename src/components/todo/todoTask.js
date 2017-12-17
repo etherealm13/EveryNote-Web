@@ -9,7 +9,6 @@ class TodoTask extends Component {
 
   selectedTaskItem(){
     this.props.changeTodoStatus({taskData: this.props.data, type: this.props.type});
-
   }
 
   render() {

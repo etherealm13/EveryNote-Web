@@ -4,16 +4,23 @@ import { connect } from 'react-redux';
 import Header from '../common/header';
 import Loader from '../common/loading';
 import TodoComponent from './todoListComponent';
-import { fetchTodos } from '../../actions/index';
+import { fetchTodos, deleteCompleted } from '../../actions/index';
 
 class TodoList extends Component {
-  
+  constructor(props){
+    super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
   componentWillMount(){
     this.props.fetchTodos();
   }
 
   componentDidMount(){
-    document.title = "Add Note - EveryNote";
+    document.title = "Todos - EveryNote";
+  }
+
+  clickHandler(type, main, urgent, others){
+    this.props.deleteCompleted({ type, main, urgent, others });
   }
 
   renderList(){
@@ -29,7 +36,14 @@ class TodoList extends Component {
         }else{
           todos = this.props[field.prop];
         }
-        return <TodoComponent key={field.name} type={field.type} name={field.name} todo={todos}/>
+        return <TodoComponent 
+          key={field.name} 
+          type={field.type} 
+          name={field.name} 
+          todo={todos}
+          enableRemove={this.props.enableRemove}
+          clickHandler={() => this.clickHandler(field.type, this.props.mainTodos, this.props.urgentTodos, this.props.otherTodos)}
+          />
     })
   }
 
@@ -50,28 +64,41 @@ class TodoList extends Component {
 function mapStateToProps(state) {
   let todos = state.todo.todos;
   let mainTasks = [], urgentTasks = [], otherTasks = [];
+  let mainTodos = {}, urgentTodos = {}, otherTodos = {};
   if(todos != undefined){
     if(todos.main != undefined){
+      mainTodos = todos.main.tasks;
       mainTasks = _.map(todos.main.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };
       });
     }
 
     if(todos.urgent != undefined){
+      urgentTodos = todos.urgent.tasks;
       urgentTasks = _.map(todos.urgent.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };
       });
     }
     
     if(todos.others != undefined){
+      otherTodos = todos.others.tasks;
       otherTasks = _.map(todos.others.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };
       });
     }
   }
-  return { mainTasks, urgentTasks, otherTasks }
+  return { 
+    mainTasks,
+    mainTodos,
+    urgentTasks,
+    urgentTodos,
+    otherTasks,
+    otherTodos,
+    enableRemove: state.todo.enableRemove
+  }
 }
 
 export default connect(mapStateToProps, {
-   fetchTodos
+   fetchTodos,
+   deleteCompleted
  })(TodoList);

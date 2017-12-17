@@ -83,5 +83,7 @@ export const ADD_TODO_TASK_SUCCESS = 'ADD_TODO_TASK_SUCCESS';
 export const COMPLETE_TODO_TASK = 'COMPLETE_TODO_TASK';
 export const DELETE_TODO = 'DELETE_TODO';
 export const EDIT_TODO_TASK = 'EDIT_TODO_TASK';
+export const CLEAR_DATA = 'CLEAR_DATA';
+export const TODO_FORM_RESET = 'TODO_FORM_RESET';
 
 
