@@ -41,15 +41,14 @@ class TodoList extends Component {
           type={field.type} 
           name={field.name} 
           todo={todos}
-          enableRemove={this.props.enableRemove}
           clickHandler={() => this.clickHandler(field.type, this.props.mainTodos, this.props.urgentTodos, this.props.otherTodos)}
-          />
+        />
     })
   }
 
   render() {
     return (
-      <div className="">
+      <div>
         <Header />
         <div className="container my-5">
               <div className="row todo-component-wrapper">
@@ -93,8 +92,7 @@ function mapStateToProps(state) {
     urgentTasks,
     urgentTodos,
     otherTasks,
-    otherTodos,
-    enableRemove: state.todo.enableRemove
+    otherTodos
   }
 }
 

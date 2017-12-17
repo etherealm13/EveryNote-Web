@@ -6,11 +6,15 @@ import TodoTask from './todoTask';
 import AddTaskForm from './addTaskForm';
 
 const renderTasksList = (props) => {
-  if(!_.isEmpty(props.todo) && props.todo.length > 0){
-    let sortedTodos = props.todo.sort(function(a,b) {
+  if(props.todo.length > 0){
+    let sortedTodos = [];
+    if(props.todo.length > 1){
+      sortedTodos = props.todo.sort(function(a,b) {
         return new Date(b.dateStamp) - new Date(a.dateStamp) 
-    });
-
+      });
+    }else{
+      sortedTodos = props.todo;
+    }
     return sortedTodos.map((i) => {
       return (
         <li className={props.type} key={i.uniqueid}>
@@ -26,12 +30,7 @@ const renderDeleteButton = (props) => {
     <div className="inline-block-div task-remove">
       <div className="inline-block-div task-remove ">
         <span onClick={props.clickHandler} className="glyphicon glyphicon-trash"></span>
-      </div>
-      {/*     
-      <div className="inline-block-div task-remove">
-        <span onClick={props.clickHandler} className="glyphicon glyphicon-sort"></span>
-      </div>
-      */} 
+      </div> 
     </div>
   )
 }

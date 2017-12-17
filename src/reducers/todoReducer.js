@@ -17,8 +17,17 @@ const INITIAL_STATE = {
   urgent: '',
   others: '',
   loading: false,
-  todos: {},
-  enableRemove: 0
+  todos: {
+    main: {
+      tasks:{}
+    },
+     urgent: {
+      tasks:{}
+    },
+     others: {
+      tasks:{}
+    }
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -46,11 +55,6 @@ export default (state = INITIAL_STATE, action) => {
       }
     
     case COMPLETE_TODO_TASK:
-      if(!action.payload.taskData.completed){
-        state.enableRemove++;
-      }else{
-        state.enableRemove--;
-      }
       return { ...state, todos: { 
           ...state.todos, [action.payload.type]: { 
             ...state.todos[action.payload.type], tasks: {

@@ -11,8 +11,7 @@ import {
   ADD_TODO_TASK_SUCCESS,
   COMPLETE_TODO_TASK,
   DELETE_TODO,
-  EDIT_TODO_TASK,
-  CLEAR_DATA
+  EDIT_TODO_TASK
 } from './types';
 
 
@@ -43,12 +42,12 @@ export function addTask(task, type = '') {
     dispatch({ type: ADD_TODO_TASK });
     let dateStamp = new Date().toString();
     let data = { task, dateStamp, completed: false };
-    return firebase.database().ref(`/users/${currentUser.uid}/todos/${type}/tasks`)
+    firebase.database().ref(`/users/${currentUser.uid}/todos/${type}/tasks`)
     .push(data)
     .then((res) => {
-      // alternate dispatch(fetchTodos());
       dispatch({ type: TODO_FORM_RESET });
-      dispatch({ type: ADD_TODO_TASK_SUCCESS, payload: {task, type, id: res.key, data} });
+      dispatch(fetchTodos());
+      // dispatch({ type: ADD_TODO_TASK_SUCCESS, payload: {task, type, id: res.key, data} });
     })
     .catch((error) => {
     });
