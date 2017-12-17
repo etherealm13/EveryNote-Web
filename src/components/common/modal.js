@@ -47,8 +47,9 @@ class CustomModal extends Component{
 					<ReactModal
 		              	isOpen={this.props.modal.modalShow}
 		              	contentLabel="Modal"
-		              	onRequestClose={() => this.hideModalHandler}
+		              	onRequestClose={this.hideModalHandler.bind(this)}
 		              	style={customStyle}
+		              	shouldCloseOnOverlayClick={true}
 			        >
 			            <div className="popup-content">
 					  		<div className="popup-body">
@@ -76,8 +77,9 @@ class CustomModal extends Component{
 					<ReactModal
 			              isOpen={this.props.modal.modalShow}
 			              contentLabel="Modal"
-			              onRequestClose={() => this.hideModalHandler}
+			              onRequestClose={this.hideModalHandler.bind(this)}
 			              style={customStyle}
+			              shouldCloseOnOverlayClick={true}
 			            >
 			            <div className="popup-content">
 					  		<div className="popup-body">
@@ -105,8 +107,9 @@ class CustomModal extends Component{
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
-						onRequestClose={() => this.hideModalHandler}
+						onRequestClose={this.hideModalHandler.bind(this)}
 						contentLabel="No Overlay Click Modal"
+						shouldCloseOnOverlayClick={true}
 						>
 			            <div className="popup-content">
 					  		<div className="popup-body">
@@ -135,7 +138,8 @@ class CustomModal extends Component{
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
-						onRequestClose={() => this.hideModalHandler}
+						onRequestClose={this.hideModalHandler.bind(this)}
+						shouldCloseOnOverlayClick={true}
 						>
 			            <div className="popup-content">
 					  		<div className="popup-body">
@@ -164,7 +168,8 @@ class CustomModal extends Component{
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
-						onRequestClose={() => this.hideModalHandler}
+						onRequestClose={this.hideModalHandler.bind(this)}
+						shouldCloseOnOverlayClick={true}
 						>
 			            <div className="popup-content">
 					  		<div className="popup-body">
