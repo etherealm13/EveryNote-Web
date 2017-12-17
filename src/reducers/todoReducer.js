@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   TODO_FORM_RESET,
   FETCH_TODOS,
@@ -7,7 +6,6 @@ import {
   ADD_TODO_TASK,
   ADD_TODO_TASK_SUCCESS,
   COMPLETE_TODO_TASK,
-  DELETE_TODO,
   EDIT_TODO_TASK,
   CLEAR_DATA
 } from '../actions/types';

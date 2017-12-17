@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser } from '../../actions/index';
@@ -9,6 +10,7 @@ class CustomModal extends Component{
 	};
 	hideModalHandler(){
 		this.props.hideModal();
+		this.props.fetchPosts();
 	}
 	deleteNoteHandler(){
 		this.props.deleteNote(this.props.modal.data);
@@ -40,7 +42,6 @@ class CustomModal extends Component{
 					<ReactModal
 		              	isOpen={this.props.modal.modalShow}
 		              	contentLabel="Modal"
-		              	// onRequestClose={() => this.props.hideModal()}
 		              	style={customStyle}
 			        >
 			            <div className="popup-content">
@@ -69,7 +70,6 @@ class CustomModal extends Component{
 					<ReactModal
 			              isOpen={this.props.modal.modalShow}
 			              contentLabel="Modal"
-			              // onRequestClose={() => this.props.hideModal()}
 			              style={customStyle}
 			            >
 			            <div className="popup-content">
@@ -97,7 +97,6 @@ class CustomModal extends Component{
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
 						>
@@ -126,7 +125,6 @@ class CustomModal extends Component{
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
 						>
@@ -155,7 +153,6 @@ class CustomModal extends Component{
 				return (
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
-						onRequestClose={() => this.props.hideModal()}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
 						>
@@ -231,4 +228,4 @@ function mapStateToProps(state) {
   return { post: state.post, modal: state.modal, editing: state.post.editing, uid: state.post.postId };
 }
 
-export default connect(mapStateToProps, { hideModal, deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser })(CustomModal);
+export default connect(mapStateToProps, { hideModal,  deleteNote, multiDelete, getPostDetails, fetchPosts, logoutUser })(CustomModal);

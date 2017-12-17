@@ -13,8 +13,9 @@ import {
   FETCH_POSTS_SUCCESS,
   GET_POST_DETAILS,
   GET_POST_DETAILS_SUCCESS,
+  EDIT_NOTE,
   EDIT_IN_PROGRESS,
-  UPDATE_NOTE,
+  EDIT_NOTE_SUCCESS,
   UPDATE_NOTE_SUCCESS,
   NOTE_SELECTED
 } from './types';
@@ -72,7 +73,7 @@ export function updateNote(post, id) {
   const { currentUser } = firebase.auth();
   let dateStamp = new Date().toString();
   return (dispatch) => {
-    dispatch({ type: UPDATE_NOTE });
+    dispatch({ type: EDIT_NOTE });
     return firebase.database().ref(`/users/${currentUser.uid}/posts/${id}`)
     .set({
       title: post.title,
@@ -139,7 +140,6 @@ export function deleteNote(id) {
     firebase.database().ref(`users/${user.uid}/posts/`).child(id).remove()
     .then(() => {
         hashHistory.push('/posts');
-        fetchPosts();
       });
   };
 }
@@ -180,5 +180,11 @@ export function resetMultiSelect(data){
     }
   }else{
     return () => {}
+  }
+}
+
+export function modalCancelled(){
+  return {
+    type: EDIT_NOTE_SUCCESS
   }
 }

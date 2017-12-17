@@ -1,17 +1,10 @@
 import firebase from 'firebase';
-import { hashHistory } from 'react-router';
 import {
   TODO_FORM_RESET,
-  FETCH_TODOS,
   FETCH_TODOS_SUCCESS,
   TODO_TASK_TITLE_CHANGED,
-  ADD_TODO_TITLE,
-  ADD_TODO_TITLE_SUCCESS,
   ADD_TODO_TASK,
-  ADD_TODO_TASK_SUCCESS,
-  COMPLETE_TODO_TASK,
-  DELETE_TODO,
-  EDIT_TODO_TASK
+  COMPLETE_TODO_TASK
 } from './types';
 
 

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -25,11 +26,11 @@ class PostsList extends Component {
     document.title = "Home - EveryNote";
   }
 
-  componentWillUpdate(nextProps) {
-    if (!nextProps.authenticated) {
-      this.context.router.push('/login');
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //   if (!nextProps.authenticated) {
+  //     this.context.router.push('/login');
+  //   }
+  // }
 
   renderMultiDeleteButton(){
     if(this.props.showMultiDelete > 0){
@@ -46,7 +47,7 @@ class PostsList extends Component {
   }
 
   renderPost() {
-    if (!this.props.loading && this.props.loading != undefined) {
+    if (!this.props.loading && this.props.loading !== undefined) {
       if (this.props.posts.length) {
           let sortedPosts = this.props.posts.sort(function(a,b) {
               return new Date(b.dateStamp) - new Date(a.dateStamp) 

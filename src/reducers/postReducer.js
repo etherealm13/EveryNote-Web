@@ -10,7 +10,6 @@ import {
   EDIT_IN_PROGRESS,
   EDIT_NOTE_SUCCESS,
   CANCEL_EDIT,
-  UPDATE_NOTE,
   UPDATE_NOTE_SUCCESS,
   FETCH_POSTS,
   FETCH_POSTS_SUCCESS,
@@ -68,8 +67,6 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: false };
     case CANCEL_EDIT:
       return { ...state, ...INITIAL_STATE };
-    case UPDATE_NOTE:
-      return { ...state, loading: true };
     case UPDATE_NOTE_SUCCESS:
       return { ...state, ...INITIAL_STATE, postDetail: action.payload };
     case NOTE_SELECTED:

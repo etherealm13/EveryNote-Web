@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { fetchTodos, changeTodoStatus } from '../../actions/index';
 
 class TodoTask extends Component {
-  constructor(props){
-    super(props);
-  }
-
   selectedTaskItem(){
     this.props.changeTodoStatus({taskData: this.props.data, type: this.props.type});
   }

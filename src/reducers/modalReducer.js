@@ -6,7 +6,6 @@ import {
 const INITIAL_STATE = {
   modalShow: false,
   error: '',
-  loading: false,
   editing: false,
   title: '',
   settings: null,
@@ -18,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
     case MODAL_SHOW:
       return { ...state, modalShow: true, type: action.payload, data: action.data };
     case MODAL_HIDE:
-      return { ...INITIAL_STATE, modalShow: false };
+      return { ...state, modalShow: false };
     default:
     return state;
   }

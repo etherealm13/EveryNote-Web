@@ -44,17 +44,17 @@ class AddTaskForm extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  if(ownProps.data == 'main'){
+  if(ownProps.data === 'main'){
     return {
       main : state.todo[ownProps.data]
     };
   }
-  if(ownProps.data == 'urgent'){
+  if(ownProps.data === 'urgent'){
     return {
       urgent : state.todo[ownProps.data]
     };
   }
-  if(ownProps.data == 'others'){
+  if(ownProps.data === 'others'){
     return {
       others : state.todo[ownProps.data]
     };
