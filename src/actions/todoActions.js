@@ -70,18 +70,23 @@ export function fetchTodos() {
 export function deleteCompleted(data){
   if(data != null){
     let currentData = data[data.type];
+    let deleteEnabled = false;
     const user = firebase.auth().currentUser;
     for(let i in currentData){
-        if(currentData[i].completed){
-          currentData[i] = null;  
-        }
+      if(currentData[i].completed){
+        deleteEnabled = true;
+        currentData[i] = null;  
       }
-    return (dispatch) => {
-      firebase.database().ref(`users/${user.uid}/todos/${data.type}/tasks`).update(currentData)
-      .then(() =>{
-        dispatch(fetchTodos());
-      });
     }
+    if(deleteEnabled){
+      return (dispatch) => {
+        firebase.database().ref(`users/${user.uid}/todos/${data.type}/tasks`).update(currentData)
+        .then(() =>{
+          dispatch(fetchTodos());
+        });
+      }
+    }
+    return () => {};
   }
   return () => {};
 }
