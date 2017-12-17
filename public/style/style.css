@@ -39,6 +39,10 @@ body{
   font-size: 12px;
 }
 
+.text-gray{
+  color: #777;
+}
+
 .more-icon:hover{
   color: #009688;
 }

@@ -20,11 +20,17 @@ export function taskTitleChanged(text, type) {
 export function changeTodoStatus(data) {
     const { currentUser } = firebase.auth();
     if(currentUser != null){
+      let dateStamp = new Date().toString();
       return (dispatch) => {
-        firebase.database().ref(`/users/${currentUser.uid}/todos/${data.type}/tasks/${data.taskData.uniqueid}/completed`)
-         .set(!data.taskData.completed);
-          let task = {...data.taskData, completed: !data.taskData.completed}
-          dispatch({ type: COMPLETE_TODO_TASK, payload: data, newData: task });
+        firebase.database().ref(`/users/${currentUser.uid}/todos/${data.type}/tasks/${data.taskData.uniqueid}`)
+        .set({
+          task: data.taskData.task,
+          uniqueid: data.taskData.uniqueid,
+          completed: !data.taskData.completed, 
+          dateStamp: dateStamp
+        });
+        let task = {...data.taskData, completed: !data.taskData.completed }
+        dispatch({ type: COMPLETE_TODO_TASK, payload: data, newData: task });
       }
     }
   return () => {};
