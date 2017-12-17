@@ -30,7 +30,7 @@ class TodoList extends Component {
         {prop: 'otherTasks', name: 'Others', type: 'others'}
       ];
     return types.map((field) => {
-        if(this.props[field.prop] == undefined){
+        if(this.props[field.prop] === undefined){
           todos = [];
         }else{
           todos = this.props[field.prop];
@@ -63,22 +63,22 @@ function mapStateToProps(state) {
   let todos = state.todo.todos;
   let mainTasks = [], urgentTasks = [], otherTasks = [];
   let mainTodos = {}, urgentTodos = {}, otherTodos = {};
-  if(todos != undefined){
-    if(todos.main != undefined){
+  if(todos !== undefined || todos !== null){
+    if(todos.main !== undefined){
       mainTodos = todos.main.tasks;
       mainTasks = _.map(todos.main.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };
       });
     }
 
-    if(todos.urgent != undefined){
+    if(todos.urgent !== undefined){
       urgentTodos = todos.urgent.tasks;
       urgentTasks = _.map(todos.urgent.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };
       });
     }
     
-    if(todos.others != undefined){
+    if(todos.others !== undefined){
       otherTodos = todos.others.tasks;
       otherTasks = _.map(todos.others.tasks, (val, uniqueid) => {
         return { ...val, uniqueid };

@@ -1,6 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
-import Header from '../common/header';
 import TodoTask from './todoTask';
 import AddTaskForm from './addTaskForm';
 

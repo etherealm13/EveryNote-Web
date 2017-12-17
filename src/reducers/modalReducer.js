@@ -4,22 +4,19 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  modalShow: false,
-  error: '',
-  loading: false,
-  editing: false,
-  title: '',
-  settings: null,
-  data: null,
+    modal: {
+      modalShow: false,
+      data: null,
+    }
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE.modal, action) => {
   switch (action.type) {
     case MODAL_SHOW:
-      return { ...state, modalShow: true, type: action.payload, data: action.data };
+      return { ...state, modalShow: true, type: action.payload, data: action.data, posts: action.posts };
     case MODAL_HIDE:
-      return { ...INITIAL_STATE, modalShow: false };
+      return { ...state, modalShow: false };
     default:
-    return state;
+    return { ...state };
   }
 };

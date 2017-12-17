@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
+import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { verifyEmail, logoutUser } from '../../actions/index';
@@ -17,18 +18,18 @@ class App extends Component {
             authDomain: 'everynote-1e6a4.firebaseapp.com',
             databaseURL: 'https://everynote-1e6a4.firebaseio.com',
             projectId: 'everynote-1e6a4',
-            storageBucket: 'everynote-1e6a4.appspot.com',
+            // storageBucket: 'everynote-1e6a4.appspot.com',
             messagingSenderId: '631530737487'
         };
 
-          // const config = {
-          //   apiKey: "AIzaSyAv9GVVoO7Jc9k93BWRH1FXSnj4NLw5dac",
-          //   authDomain: "everynote-test-1.firebaseapp.com",
-          //   databaseURL: "https://everynote-test-1.firebaseio.com",
-          //   projectId: "everynote-test-1",
-          //   storageBucket: "",
-          //   messagingSenderId: "437149861632"
-          // };
+        // const config = {
+        //     apiKey: "AIzaSyAv9GVVoO7Jc9k93BWRH1FXSnj4NLw5dac",
+        //     authDomain: "everynote-test-1.firebaseapp.com",
+        //     databaseURL: "https://everynote-test-1.firebaseio.com",
+        //     projectId: "everynote-test-1",
+        //     storageBucket: "",
+        //     messagingSenderId: "437149861632"
+        // };
         
         firebase.initializeApp(config);
     }

@@ -30,19 +30,17 @@ import {
 
 export function checkAuth() {
   return (dispatch) => {
-  dispatch({ type: LOADING });
-  return firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        if (!user.emailVerified){
+    dispatch({ type: LOADING });
+    return firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        if(!user.emailVerified){
             firebase.auth().signOut()
             .then(() => {
               return emailUnVerified(dispatch);
             })
-        }else {
-        dispatch({ type: USER_LOGGED_IN, payload: user });
         }
         dispatch({ type: USER_LOGGED_IN, payload: user });
-      } else {
+      }else {
         dispatch({ type: USER_LOGGED_OUT });
       }
     });

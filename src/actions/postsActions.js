@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { hashHistory } from 'react-router';
 import {
-  FORM_RESET,
+  POST_FORM_RESET,
   TITLE_CHANGED,
   TITLE_UPDATED,
   DESCRIPTION_CHANGED,
@@ -13,9 +13,11 @@ import {
   FETCH_POSTS_SUCCESS,
   GET_POST_DETAILS,
   GET_POST_DETAILS_SUCCESS,
+  EDIT_NOTE,
   EDIT_IN_PROGRESS,
-  UPDATE_NOTE,
+  EDIT_NOTE_SUCCESS,
   UPDATE_NOTE_SUCCESS,
+  RESET_SELECTED_COUNT,
   NOTE_SELECTED
 } from './types';
 
@@ -59,7 +61,7 @@ export function addNote(title, description) {
     .push({ title, description, dateStamp: dateStamp })
     .then(() => {
       dispatch({ type: ADD_NOTE_SUCCESS });
-      fetchPosts();
+      // fetchPosts();
       hashHistory.push('/posts');
     })
     .catch((error) => {
@@ -72,7 +74,7 @@ export function updateNote(post, id) {
   const { currentUser } = firebase.auth();
   let dateStamp = new Date().toString();
   return (dispatch) => {
-    dispatch({ type: UPDATE_NOTE });
+    dispatch({ type: EDIT_NOTE });
     return firebase.database().ref(`/users/${currentUser.uid}/posts/${id}`)
     .set({
       title: post.title,
@@ -100,7 +102,7 @@ export function fetchPosts() {
       return firebase.database().ref(`/users/${currentUser.uid}/posts`)
       .once('value', snapshot => {
         dispatch({ type: FETCH_POSTS_SUCCESS, payload: snapshot.val() });
-        resetMultiSelect(snapshot.val());
+        dispatch({ type: RESET_SELECTED_COUNT });
       });
     };
   }
@@ -139,7 +141,6 @@ export function deleteNote(id) {
     firebase.database().ref(`users/${user.uid}/posts/`).child(id).remove()
     .then(() => {
         hashHistory.push('/posts');
-        fetchPosts();
       });
   };
 }
@@ -158,7 +159,7 @@ export function multiDelete(data){
     .then(() => {
       hashHistory.push('/');
       return {
-        type: FORM_RESET
+        type: POST_FORM_RESET
       };
     })
   }
@@ -168,7 +169,7 @@ export function multiselect(id){
   return {
     type: NOTE_SELECTED,
     payload: id
-  };
+  }
 }
 
 export function resetMultiSelect(data){
@@ -178,7 +179,12 @@ export function resetMultiSelect(data){
         delete data[i];
       }
     }
-  }else{
-    return () => {}
+  }
+  return () => {}
+}
+
+export function modalCancelled(){
+  return {
+    type: EDIT_NOTE_SUCCESS
   }
 }

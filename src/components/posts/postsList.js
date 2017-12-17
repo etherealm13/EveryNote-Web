@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -46,7 +47,7 @@ class PostsList extends Component {
   }
 
   renderPost() {
-    if (!this.props.loading && this.props.loading != undefined) {
+    if (!this.props.loading && this.props.loading !== undefined) {
       if (this.props.posts.length) {
           let sortedPosts = this.props.posts.sort(function(a,b) {
               return new Date(b.dateStamp) - new Date(a.dateStamp) 
@@ -93,14 +94,19 @@ class PostsList extends Component {
 }
 
 function mapStateToProps(state) {
-  const posts = _.map(state.post.posts, (val, uniqueid) => {
-    return { ...val, uniqueid };
-  });
-  return { 
-    posts, 
-    loading: state.post.loading, 
-    multiselect: state.post.selectedPosts,
-    showMultiDelete: state.post.showMultiDelete };
+
+  if(state.post){
+    const posts = _.map(state.post.posts, (val, uniqueid) => {
+      return { ...val, uniqueid };
+    });
+    return { 
+      posts, 
+      loading: state.post.loading, 
+      multiselect: state.post.selectedPosts,
+      showMultiDelete: state.post.showMultiDelete 
+    };
+  }
+  return {};
 }
 
 export default connect(mapStateToProps, { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete, resetMultiSelect })(PostsList);

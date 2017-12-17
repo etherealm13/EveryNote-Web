@@ -52,6 +52,8 @@ export const EDIT_NOTE_SUCCESS = 'EDIT_NOTE_SUCCESS';
 export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const NOTE_SELECTED = 'NOTE_SELECTED';
+export const POST_FORM_RESET = 'POST_FORM_RESET';
+export const RESET_SELECTED_COUNT = 'RESET_SELECTED_COUNT';
 
 // Fetch Post
 export const FETCH_POSTS = 'FETCH_POSTS';

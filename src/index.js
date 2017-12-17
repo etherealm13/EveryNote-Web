@@ -41,10 +41,11 @@ ReactDOM.render(
         <Route path="/login" component={LoginForm} />
         
         <Route path="/posts" component={RequireAuth(PostsList)} />
+        <Route path="/todos" component={RequireAuth(TodoList)} />
+        
         <Route path="/post-add" component={RequireAuth(PostForm)} />
         <Route path="/posts/:id" component={RequireAuth(PostDetail)} />
         
-        <Route path="/todos" component={RequireAuth(TodoList)} />
         
 
         <Route path="/signup" component={SignUpForm} />

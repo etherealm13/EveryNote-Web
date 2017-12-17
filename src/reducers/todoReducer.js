@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   TODO_FORM_RESET,
   FETCH_TODOS,
@@ -7,37 +6,38 @@ import {
   ADD_TODO_TASK,
   ADD_TODO_TASK_SUCCESS,
   COMPLETE_TODO_TASK,
-  DELETE_TODO,
   EDIT_TODO_TASK,
   CLEAR_DATA
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  main: '',
-  urgent: '',
-  others: '',
-  loadingTodo: false,
-  todos: {
-    main: {
-      tasks:{}
-    },
-     urgent: {
-      tasks:{}
-    },
-     others: {
-      tasks:{}
+  todo: {
+    main: '',
+    urgent: '',
+    others: '',
+    loadingTodo: false,
+    todos: {
+      main: {
+        tasks:{}
+      },
+       urgent: {
+        tasks:{}
+      },
+       others: {
+        tasks:{}
+      }
     }
-  }
+  } 
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE.todo, action) => {
   switch (action.type) {
     
     case CLEAR_DATA:
-      return { ...INITIAL_STATE };
+      return { ...INITIAL_STATE.todo };
     
     case TODO_FORM_RESET:
-      return { ...INITIAL_STATE, todos: {...state.todos} };
+      return { ...INITIAL_STATE.todo, todos: {...state.todos} };
     
     case TODO_TASK_TITLE_CHANGED:
       return { ...state, [action.titleType]: action.payload };
@@ -71,9 +71,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loadingTodo: true};
 
     case FETCH_TODOS_SUCCESS:
-      return { ...state, ...INITIAL_STATE, todos: action.payload };
+      if(action.payload != null){
+        return { ...state, todos: action.payload };
+      }
+        return { ...state, ...INITIAL_STATE.todo };
+      
 
     default:
-    return state;
+    return { ...state };
   }
 };

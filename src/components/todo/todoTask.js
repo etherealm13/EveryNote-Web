@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTodos, changeTodoStatus } from '../../actions/index';
+import moment from 'moment';
 
 class TodoTask extends Component {
-  constructor(props){
-    super(props);
-  }
-
   selectedTaskItem(){
     this.props.changeTodoStatus({taskData: this.props.data, type: this.props.type});
+  }
+
+  filterDate(){
+    let date = this.props.data.dateStamp;
+    return moment(date).format('h:mm a, Do MMM, YY');
   }
 
   render() {
@@ -29,6 +31,7 @@ class TodoTask extends Component {
             <p className={(this.props.data.completed) ? 'todo-item-text completed' : 'todo-item-text' }>
             {this.props.data.task}
             </p>
+            <p className="post-card-stamp">{this.filterDate()}</p>
           </div>
       </div>
     );

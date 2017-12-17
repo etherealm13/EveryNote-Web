@@ -12,10 +12,9 @@ body {
 }
 body{
   /*background-color: #f7f9f7;*/
-  /*background-color: #c3e4f1;*/
+  background-color: #eaf5f4;
   /*background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23eef0d6' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
-  /*background-image: url("data:image/svg+xml,<svg width='42' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg viewBox='0 0 42 44' preserveAspectRatio='xMidYMid meet'> <g transform='translate(0.000000,600.000000) scale(0.100000,-0.100000)'fill='#000000' stroke='none'></g></svg>");*/
-  background-image: url("../assets/bg.jpg");
+  /*background-image: url("../assets/bg.jpg");*/
 }
 #entry{
   padding-bottom: 2em;
@@ -38,6 +37,10 @@ body{
   float: right;
   color: #9e9e9e;
   font-size: 12px;
+}
+
+.text-gray{
+  color: #777;
 }
 
 .more-icon:hover{

@@ -1,17 +1,11 @@
 import firebase from 'firebase';
-import { hashHistory } from 'react-router';
 import {
   TODO_FORM_RESET,
   FETCH_TODOS,
   FETCH_TODOS_SUCCESS,
   TODO_TASK_TITLE_CHANGED,
-  ADD_TODO_TITLE,
-  ADD_TODO_TITLE_SUCCESS,
   ADD_TODO_TASK,
-  ADD_TODO_TASK_SUCCESS,
-  COMPLETE_TODO_TASK,
-  DELETE_TODO,
-  EDIT_TODO_TASK
+  COMPLETE_TODO_TASK
 } from './types';
 
 
@@ -26,11 +20,17 @@ export function taskTitleChanged(text, type) {
 export function changeTodoStatus(data) {
     const { currentUser } = firebase.auth();
     if(currentUser != null){
+      let dateStamp = new Date().toString();
       return (dispatch) => {
-        firebase.database().ref(`/users/${currentUser.uid}/todos/${data.type}/tasks/${data.taskData.uniqueid}/completed`)
-         .set(!data.taskData.completed);
-          let task = {...data.taskData, completed: !data.taskData.completed}
-          dispatch({ type: COMPLETE_TODO_TASK, payload: data, newData: task });
+        firebase.database().ref(`/users/${currentUser.uid}/todos/${data.type}/tasks/${data.taskData.uniqueid}`)
+        .set({
+          task: data.taskData.task,
+          uniqueid: data.taskData.uniqueid,
+          completed: !data.taskData.completed, 
+          dateStamp: dateStamp
+        });
+        let task = {...data.taskData, completed: !data.taskData.completed }
+        dispatch({ type: COMPLETE_TODO_TASK, payload: data, newData: task });
       }
     }
   return () => {};
@@ -58,8 +58,9 @@ export function fetchTodos() {
     const { currentUser } = firebase.auth();
     if(currentUser != null){
       return (dispatch) => {
-        return firebase.database().ref(`/users/${currentUser.uid}/todos`)
-        .once('value', snapshot => {
+        dispatch({ type: FETCH_TODOS })
+        firebase.database().ref(`/users/${currentUser.uid}/todos`)
+        .on('value', snapshot => {
           dispatch({ type: FETCH_TODOS_SUCCESS, payload: snapshot.val()});
         });
       } 

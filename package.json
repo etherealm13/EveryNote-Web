@@ -1,6 +1,6 @@
 {
   "name": "everynote-todo-v1.0.0",
-  "version": "1.0.01",
+  "version": "1.0.012",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -33,6 +33,7 @@
     "jsdom": "^8.1.0",
     "lodash": "^3.10.1",
     "moment": "^2.18.1",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-modal": "^2.3.2",

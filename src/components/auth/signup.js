@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Loader from '../common/loading';
@@ -50,12 +51,13 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="login-page">
-        <form className="form-signin" onSubmit={this.handleFormSubmit.bind(this)}>
+        <form className="form-signin" onSubmit={this.handleFormSubmit.bind(this)} autoComplete="off">
           <img alt="logo" className="logo" src="/assets/icon.png" />
           <h2 className="form-signin-heading">EveryNote</h2>
           <h5 className="error">{this.props.error}</h5>
-          <label htmlFor="inputEmail" className="sr-only">Email</label>
+          <label htmlFor="Email" className="sr-only">Email</label>
           <input
+            name="Email"
             type="email"
             className="form-control"
             placeholder="Email"
@@ -63,8 +65,9 @@ class SignUpForm extends Component {
             value={this.props.email}
             onChange={this.onEmailChange.bind(this)}
           />
-          <label htmlFor="inputPassword" className="sr-only">Password</label>
+          <label htmlFor="Password" className="sr-only">Password</label>
           <input
+            name="Password"
             type="password"
             className="form-control"
             placeholder="Password (Min 6 character)"
