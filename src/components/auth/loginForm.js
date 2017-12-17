@@ -68,23 +68,23 @@ class LoginForm extends Component {
           <img className="logo" alt="logo" src="/assets/icon.png" />
           <h2 className="form-signin-heading">EveryNote</h2>
           <h5 className="error">{this.props.error}</h5>
-          <label htmlFor="inputEmail" className="sr-only">Email address</label>
+          <label htmlFor="Email" className="sr-only">Email address</label>
           <input
+            name="Email"
             type="email"
             className="form-control"
             placeholder="Email"
-            label="Email"
             autoFocus
             required
             value={this.props.email}
             onChange={this.onEmailChange.bind(this)}
           />
-          <label htmlFor="inputPassword" className="sr-only">Password</label>
+          <label htmlFor="Password" className="sr-only">Password</label>
           <input
             type="password"
             className="form-control"
             placeholder="Password"
-            label="Password"
+            name="Password"
             required
             value={this.props.password}
             onChange={this.onPasswordChange.bind(this)}
