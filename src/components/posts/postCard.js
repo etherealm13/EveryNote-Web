@@ -8,10 +8,12 @@ class PostCard extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
-  getPostDetails() {
+  getPostDetailsHandler() {
     let rand = Math.floor(Math.random() * 5) + 1;
     this.props.getPostDetails(this.props.post.uniqueid, rand);
-    this.props.resetMultiSelect(this.props.data);
+    if(this.props.data){
+      this.props.resetMultiSelect(this.props.data);
+    }
   }
 
   selectedNote(){
@@ -39,7 +41,7 @@ class PostCard extends Component {
             <p className="post-card-stamp">{this.filterDate()}</p>
           </div>
            <hr className="post-divider"/>
-          <div title="Click to view details" onClick={this.getPostDetails.bind(this)}>
+          <div title="Click to view details" onClick={this.getPostDetailsHandler.bind(this)}>
             <div className="post-card-description">
             {this.props.post.description}
             </div>

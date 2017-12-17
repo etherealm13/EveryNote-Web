@@ -16,27 +16,30 @@ import {
   GET_POST_DETAILS,
   GET_POST_DETAILS_SUCCESS,
   NOTE_SELECTED,
-  FORM_RESET
+  RESET_SELECTED_COUNT,
+  POST_FORM_RESET
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  title: '',
-  description: '',
-  user: null,
-  authenticated: null,
-  error: '',
-  loading: false,
-  editing: false,
-  posts: {},
-  postDetail: {},
-  selectedPosts: {},
-  showMultiDelete: 0
+  post: {
+    title: '',
+    description: '',
+    user: null,
+    authenticated: null,
+    error: '',
+    loading: false,
+    editing: false,
+    posts: {},
+    postDetail: {},
+    selectedPosts: {},
+    showMultiDelete: 0
+  }
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE.post, action) => {
   switch (action.type) {
-    case FORM_RESET:
-      return { ...INITIAL_STATE };
+    case POST_FORM_RESET:
+      return { ...INITIAL_STATE.post };
     case TITLE_CHANGED:
       return { ...state, title: action.payload };
     case DESCRIPTION_CHANGED:
@@ -48,29 +51,29 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_NOTE:
       return { ...state, loading: true };
     case ADD_NOTE_SUCCESS:
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE.post };
     case ADD_NOTE_FAIL:
       return { ...state };
     case FETCH_POSTS:
-      return { ...state, loading: true };
+      return { ...state, ...INITIAL_STATE.post, loading: true };
     case FETCH_POSTS_SUCCESS:
-      return { ...state, ...INITIAL_STATE, posts: action.payload };
+      return { ...state, ...INITIAL_STATE.post, posts: action.payload };
     case GET_POST_DETAILS:
       return { ...state, loading: true };
     case GET_POST_DETAILS_SUCCESS:
-      return { ...state, ...INITIAL_STATE, postDetail: action.payload, postId: action.id, postNumber: action.number };
+      return { ...state, ...INITIAL_STATE.post, postDetail: action.payload, postId: action.id, postNumber: action.number };
     case EDIT_NOTE:
       return { ...state, loading: true };
     case EDIT_IN_PROGRESS:
-      return { ...state, ...INITIAL_STATE, editing: true, postDetail: action.payload};
+      return { ...state, ...INITIAL_STATE.post, editing: true, postDetail: action.payload};
     case EDIT_NOTE_SUCCESS:
       return { ...state, loading: false };
     case CANCEL_EDIT:
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE.post };
     case UPDATE_NOTE_SUCCESS:
-      return { ...state, ...INITIAL_STATE, postDetail: action.payload };
+      return { ...state, ...INITIAL_STATE.post, postDetail: action.payload };
     case NOTE_SELECTED:
-      if(state.selectedPosts[action.payload]){
+      if(state.selectedPosts[action.payload] && state.showMultiDelete > 0){
         delete state.selectedPosts[action.payload]
         state.showMultiDelete--;
       }else{
@@ -78,7 +81,10 @@ export default (state = INITIAL_STATE, action) => {
         state.showMultiDelete++;
       }
       return { ...state };  
+    case RESET_SELECTED_COUNT:
+      return { ...state, selectedPosts: {}, showMultiDelete: 0 };
+    
     default:
-    return {};
+    return { ...state };
   }
 };

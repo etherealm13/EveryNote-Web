@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import {
   TODO_FORM_RESET,
+  FETCH_TODOS,
   FETCH_TODOS_SUCCESS,
   TODO_TASK_TITLE_CHANGED,
   ADD_TODO_TASK,
@@ -51,8 +52,9 @@ export function fetchTodos() {
     const { currentUser } = firebase.auth();
     if(currentUser != null){
       return (dispatch) => {
-        return firebase.database().ref(`/users/${currentUser.uid}/todos`)
-        .once('value', snapshot => {
+        dispatch({ type: FETCH_TODOS })
+        firebase.database().ref(`/users/${currentUser.uid}/todos`)
+        .on('value', snapshot => {
           dispatch({ type: FETCH_TODOS_SUCCESS, payload: snapshot.val()});
         });
       } 

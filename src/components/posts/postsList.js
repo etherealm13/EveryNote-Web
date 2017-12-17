@@ -26,11 +26,11 @@ class PostsList extends Component {
     document.title = "Home - EveryNote";
   }
 
-  // componentWillUpdate(nextProps) {
-  //   if (!nextProps.authenticated) {
-  //     this.context.router.push('/login');
-  //   }
-  // }
+  componentWillUpdate(nextProps) {
+    if (!nextProps.authenticated) {
+      this.context.router.push('/login');
+    }
+  }
 
   renderMultiDeleteButton(){
     if(this.props.showMultiDelete > 0){
@@ -94,14 +94,19 @@ class PostsList extends Component {
 }
 
 function mapStateToProps(state) {
-  const posts = _.map(state.post.posts, (val, uniqueid) => {
-    return { ...val, uniqueid };
-  });
-  return { 
-    posts, 
-    loading: state.post.loading, 
-    multiselect: state.post.selectedPosts,
-    showMultiDelete: state.post.showMultiDelete };
+
+  if(state.post){
+    const posts = _.map(state.post.posts, (val, uniqueid) => {
+      return { ...val, uniqueid };
+    });
+    return { 
+      posts, 
+      loading: state.post.loading, 
+      multiselect: state.post.selectedPosts,
+      showMultiDelete: state.post.showMultiDelete 
+    };
+  }
+  return {};
 }
 
 export default connect(mapStateToProps, { fetchPosts, logoutUser, showModal, getPostDetails, multiDelete, resetMultiSelect })(PostsList);

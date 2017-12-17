@@ -10,7 +10,6 @@ class CustomModal extends Component{
 	};
 	hideModalHandler(){
 		this.props.hideModal();
-		this.props.fetchPosts();
 	}
 	deleteNoteHandler(){
 		this.props.deleteNote(this.props.modal.data);
@@ -26,10 +25,16 @@ class CustomModal extends Component{
 	    this.props.getPostDetails(this.props.modal.data);
 		this.hideModalHandler();
 	}
+
 	cancelAddHandler(){
 		this.context.router.push('/posts');
 		this.hideModalHandler();
 	}
+
+	cancelMultiDeleteHandler(){
+		this.hideModalHandler();
+	}
+
 	logoutHandler(){
 		this.props.logoutUser();
 		this.hideModalHandler();
@@ -42,6 +47,7 @@ class CustomModal extends Component{
 					<ReactModal
 		              	isOpen={this.props.modal.modalShow}
 		              	contentLabel="Modal"
+		              	onRequestClose={() => this.hideModalHandler}
 		              	style={customStyle}
 			        >
 			            <div className="popup-content">
@@ -70,6 +76,7 @@ class CustomModal extends Component{
 					<ReactModal
 			              isOpen={this.props.modal.modalShow}
 			              contentLabel="Modal"
+			              onRequestClose={() => this.hideModalHandler}
 			              style={customStyle}
 			            >
 			            <div className="popup-content">
@@ -85,7 +92,7 @@ class CustomModal extends Component{
 					              	Yes, Delete it
 					              	</button>
 					              	<button type="button" className="btn btn-default"
-					              	onClick = {this.hideModalHandler.bind(this)} >
+					              	onClick = {this.cancelMultiDeleteHandler.bind(this)} >
 					              	Cancel
 					              	</button>
 							  	</div>
@@ -98,6 +105,7 @@ class CustomModal extends Component{
 					<ReactModal
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
+						onRequestClose={() => this.hideModalHandler}
 						contentLabel="No Overlay Click Modal"
 						>
 			            <div className="popup-content">
@@ -127,6 +135,7 @@ class CustomModal extends Component{
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
+						onRequestClose={() => this.hideModalHandler}
 						>
 			            <div className="popup-content">
 					  		<div className="popup-body">
@@ -155,6 +164,7 @@ class CustomModal extends Component{
 						isOpen={this.props.modal.modalShow}
 						style={customStyle}
 						contentLabel="No Overlay Click Modal"
+						onRequestClose={() => this.hideModalHandler}
 						>
 			            <div className="popup-content">
 					  		<div className="popup-body">

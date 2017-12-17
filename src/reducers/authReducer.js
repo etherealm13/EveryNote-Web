@@ -27,36 +27,38 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
-  newPassword: '',
-  confirmPassword: '',
-  user: null,
-  authenticated: null,
-  error: '',
-  loading: false
+  auth: {
+    email: '',
+    password: '',
+    newPassword: '',
+    confirmPassword: '',
+    user: null,
+    authenticated: null,
+    error: '',
+    loading: false
+  }
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE.auth, action) => {
   switch (action.type) {
     case FORM_RESET:
-      return { ...INITIAL_STATE };
+      return { ...INITIAL_STATE.auth };
     case EMAIL_NOT_VERIFIED:
-      return { ...INITIAL_STATE };
+      return { ...INITIAL_STATE.auth };
     case EMAIL_VERIFIED:
-      return { ...INITIAL_STATE };
+      return { ...INITIAL_STATE.auth };
     case SIGN_UP_USER:
       return { ...state, loading: true };
     case LOADING:
       return { ...state, loading: true };
     case SIGN_UP_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, loading: false };
+      return { ...state, ...INITIAL_STATE.auth, loading: false };
     case SIGN_UP_USER_FAIL:
       return { ...state, authenticated: false, error: action.payload, loading: false };
     case EMAIL_CHANGED:
       return { ...state, email: action.payload };
     case EMAIL_LINK_SENT:
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE.auth };
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload };
     case NEW_PASSWORD_CHANGED:
@@ -64,21 +66,21 @@ export default (state = INITIAL_STATE, action) => {
     case CONFIRM_PASSWORD_CHANGED:
       return { ...state, confirmPassword: action.payload };
     case SET_NEW_PASSWORD_REQUESTED:
-      return { ...state, ...INITIAL_STATE, loading: true };
+      return { ...state, ...INITIAL_STATE.auth, loading: true };
     case VERIFY_PASSWORD_CODE:
-      return { ...state, ...INITIAL_STATE, loading: true };
+      return { ...state, ...INITIAL_STATE.auth, loading: true };
     case PASSWORD_CODE_VERIFIED:
-      return { ...state, ...INITIAL_STATE, email: action.payload };
+      return { ...state, ...INITIAL_STATE.auth, email: action.payload };
     case PASSWORD_CODE_INVALID:
-      return { ...state, ...INITIAL_STATE, authenticated: false };
+      return { ...state, ...INITIAL_STATE.auth, authenticated: false };
     case SET_NEW_PASSWORD:
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE.auth };
     case SET_ERROR_MESSAGE:
-      return { ...state, ...INITIAL_STATE, error: action.payload };
+      return { ...state, ...INITIAL_STATE.auth, error: action.payload };
     case LOGIN_USER:
       return { ...state, loading: true };
     case LOGIN_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, user: action.payload, authenticated: true };
+      return { ...state, ...INITIAL_STATE.auth, user: action.payload, authenticated: true };
     case LOGIN_USER_FAIL:
       return { ...state, authenticated: false, loading: false, error: action.payload };
     case USER_LOGGED_IN:
@@ -90,6 +92,6 @@ export default (state = INITIAL_STATE, action) => {
     case LOGOUT_USER_FAIL:
       return { ...state };
     default:
-    return state;
+    return { ...state };
   }
 };

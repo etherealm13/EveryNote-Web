@@ -63,7 +63,7 @@ function mapStateToProps(state) {
   let todos = state.todo.todos;
   let mainTasks = [], urgentTasks = [], otherTasks = [];
   let mainTodos = {}, urgentTodos = {}, otherTodos = {};
-  if(todos !== undefined){
+  if(todos !== undefined || todos !== null){
     if(todos.main !== undefined){
       mainTodos = todos.main.tasks;
       mainTasks = _.map(todos.main.tasks, (val, uniqueid) => {

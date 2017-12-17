@@ -14,9 +14,7 @@ export function showModal(type,data) {
 }
 
 export function hideModal() {
-  return (dispatch) => {
-    dispatch({
+  return {
       type: MODAL_HIDE
-    });
-  };
+  }
 }
