@@ -1,8 +1,11 @@
 {
   "short_name": "EveryNote",
   "name": "EveryNote",
-  "start_url": ".",
   "description": "Take Notes",
+  "display": "standalone",
+  "theme_color": "#009688",
+  "background_color": "#ecf0f1",
+  "start_url": ".",
   "icons": [
     {
       "src": "./assets/icon.png",
@@ -14,8 +17,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "display": "standalone",
-  "theme_color": "#009688",
-  "background_color": "#ecf0f1"
+  ]
 }

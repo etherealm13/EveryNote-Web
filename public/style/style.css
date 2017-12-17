@@ -11,7 +11,8 @@ body {
   font-family: Verdana,Geneva,sans-serif !important;
 }
 body{
-  background-color: #f7f9f7;
+  /*background-color: #f7f9f7;*/
+  /*background-color: #c3e4f1;*/
   /*background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23eef0d6' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
   /*background-image: url("data:image/svg+xml,<svg width='42' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg viewBox='0 0 42 44' preserveAspectRatio='xMidYMid meet'> <g transform='translate(0.000000,600.000000) scale(0.100000,-0.100000)'fill='#000000' stroke='none'></g></svg>");*/
   background-image: url("../assets/bg.jpg");
@@ -41,6 +42,10 @@ body{
 
 .more-icon:hover{
   color: #009688;
+}
+
+.todo-brand{
+  padding-left: 6px;
 }
 
 img.logo{
@@ -298,6 +303,10 @@ img.logo{
   font-weight: bold;
   font-family: Roboto;
   color: #009688 !important;
+}
+
+.navbar-brand.active{
+  text-decoration: underline;
 }
 .navbar-btn-wrapper {
     padding: 10px 15px;
@@ -576,6 +585,107 @@ img.logo{
 
 
 
+.todo-component-wrapper{
+  margin: 0 auto;
+}
+
+.todo-component{
+  /*border: 1px solid #e4e4e4;*/
+  margin-bottom: 20px;
+}
+
+.todo-component-header{
+  /*border: 1px solid #ccc;*/
+  border-radius: 2px;
+  padding: 8px;
+  text-align: center;
+}
+
+.todo-component-header .task-remove {
+  float: right;
+  padding: 2px 6px;
+  font-size: 14px;
+  color: #777;
+}
+
+.todo-component-header .task-remove:hover {
+  color: #000;
+}
+
+.todo-component-header.urgent{
+  background: #f78c6a;
+}
+
+.todo-component-header.main{
+  background: #cddc39;
+}
+
+.todo-component-header.others{
+  background: #FFD54F;
+}
+
+.todo-component-header h3{
+  margin: 0;
+}
+
+.todo-component .todo-task-list{
+  max-height: 425px;
+  overflow: auto;
+  display: block;
+  padding-left: 0px;
+  margin-bottom: 0;
+}
+
+.todo-component .todo-task-list li{
+  margin: 4px 0;
+  list-style: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.todo-component .todo-task-list li.urgent{
+  background: #f3cec2;
+}
+
+.todo-component .todo-task-list li.main{
+  background: #edf1c6;
+}
+
+.todo-component .todo-task-list li.others{
+  background: #f9eecc;
+}
+
+.todo-component .todo-task-list li:last-child{
+  margin: 4px 0 0 0;
+}
+
+.todo-task-component{
+}
+
+.todo-task-component .checkbox-div{
+  padding: 0px 5px 0 0;
+}
+
+.todo-item-text{
+  text-decoration: none;
+  word-wrap: break-word;
+  font-weight: 600;
+  color: #2f2f2f;
+}
+
+.todo-item-text.completed{
+  text-decoration: line-through;
+  font-weight: 500;
+  color: #666;
+}
+
+
+.add-task-form{
+  padding: 5px 0px;
+}
+
+
+
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;} 
     to {bottom: 10px; opacity: 1;}
@@ -590,6 +700,15 @@ img.logo{
 @media screen and (max-device-width: 319px) {
   body {
     padding-top: 10px;
+  }
+
+
+  .todo-component-wrapper{
+    margin: 20px auto;
+  }
+
+  .navbar-brand{
+    font-size: 20px !important;
   }
 
   .post-card-wrapper{
@@ -634,11 +753,17 @@ img.logo{
   }
 }
 
-
-
 @media screen and (min-device-width: 320px ) and (max-device-width: 480px) {
   body {
     padding-top: 10px;
+  }
+
+  .navbar-brand{
+    font-size: 20px !important;
+    padding: 15px 5px;
+  }
+  .navbar-brand.todo-brand{
+    padding: 15px 5px 15px 0;
   }
   
   .multi-delete-button{    
@@ -656,6 +781,101 @@ img.logo{
     z-index: 10;
     left: 50%;
     bottom: 5px;
+  }
+
+  .todo-component-wrapper{
+    margin: 20px auto;
+  }
+
+  @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;} 
+      to {bottom: 5px; opacity: 1;}
+  }
+
+  @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 5px; opacity: 1;}
+  }
+
+  .post-card-wrapper{
+    text-align: center;
+    margin: 20px 20px;
+  }
+  .list-wrapper{
+   text-align: center;
+    margin: 30px 10px 0; 
+  }
+  .add-note-fab{
+    bottom: 5rem;
+    right: 20px;
+  }
+  .add-note-fab .btn{
+    padding: 11px 12px 8px 14px;
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    min-width: 45px;
+  }
+  .post-card{
+    padding: 0 10px;
+    width: 130px;
+    margin: 0 10px 10px 10px;
+    height: 130px;
+    box-shadow: 0 10px 14px 0 rgba(0,0,0,0.1),0 4px 11px 0px rgba(0,0,0,0.19) !important;
+  }
+  .post-list-page .btn{
+    font-size: 12px;
+  } 
+  .post-details-page .btn-warning{
+    margin: 0 10px 0 5px;
+  }
+  .more-icon{
+    float: right;
+    color: #009688;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-device-width: 481px ) and (max-device-width: 768px) {
+  body {
+    padding-top: 10px;
+  }
+
+  .navbar-brand{
+    font-size: 20px !important;
+    padding: 15px 5px;
+  }
+  .navbar-brand.todo-brand{
+    padding: 15px 5px 15px 0;
+  }
+  
+  .multi-delete-button{    
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    min-width: 200px;
+    margin-left: -99px;
+    background-color: #009688;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: 5px;
+  }
+
+  .todo-component .todo-task-list{
+    max-height: 360px;
+    overflow: auto;
+    display: block;
+    padding-left: 0px;
+    margin-bottom: 0;
+  }
+
+  .todo-component-wrapper{
+    margin: 20px auto 0;
   }
 
   @-webkit-keyframes fadein {
