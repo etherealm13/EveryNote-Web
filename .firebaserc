@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "everynote-test-1"
+    "default": "everynote-test-1",
+    "test": "everynote-test-1",
+    "production": "everynote-1e6a4"
   }
 }

@@ -1,3 +1,5 @@
+/*Theme Color #009688*/
+
 html{
   height: 100%;
 }
@@ -440,6 +442,19 @@ img.logo{
   /*font-style: italic;*/
 }
 
+.post-description::-webkit-scrollbar {
+    width: 1em;height: 2em;
+}
+ 
+.post-description::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+.post-description::-webkit-scrollbar-thumb {
+  background-color: #009688;
+  outline: 1px solid slategrey;
+}
+
 .post-card-description{
   word-break: break-all;
   word-wrap: break-word;
@@ -520,6 +535,8 @@ img.logo{
 }
 
 .post-description{
+  max-height: 500px;
+  overflow: auto;
   color: #616161;
   line-height: 1.4;
   text-align: justify;
