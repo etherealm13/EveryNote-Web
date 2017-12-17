@@ -33,7 +33,7 @@ class AddTaskForm extends Component {
           maxLength={100}
         />
         <span className="input-group-btn">
-          <button className="btn btn-success" type="submit">
+          <button className="btn btn-success" title="Submit" type="submit">
             <span className="glyphicon glyphicon-ok"></span>
           </button>
         </span>

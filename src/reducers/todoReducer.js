@@ -67,12 +67,6 @@ export default (state = INITIAL_STATE, action) => {
     case EDIT_TODO_TASK:
       return { ...state, loading: true };
     
-    case DELETE_TODO:
-      return { ...state, todos: { 
-          ...state.todos, [action.type]: [action.payload]
-        }
-      }
-    
     case FETCH_TODOS:
       return { ...state, loading: true};
 

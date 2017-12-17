@@ -17,7 +17,7 @@ class TodoTask extends Component {
         <div className="checkbox-div inline-block-div">
             <label className="custom-checkbox">
               <input 
-              type="checkbox" 
+              type="checkbox"
               value={this.props.data.completed}
               checked={this.props.data.completed}
               className="custom-control-input" 

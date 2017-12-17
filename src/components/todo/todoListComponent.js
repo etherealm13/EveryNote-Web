@@ -29,7 +29,7 @@ const renderDeleteButton = (props) => {
   return (
     <div className="inline-block-div task-remove">
       <div className="inline-block-div task-remove ">
-        <span onClick={props.clickHandler} className="glyphicon glyphicon-trash"></span>
+        <span title="Remove Completed Tasks" onClick={props.clickHandler} className="glyphicon glyphicon-trash"></span>
       </div> 
     </div>
   )
