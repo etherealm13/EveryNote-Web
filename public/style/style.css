@@ -751,6 +751,7 @@ img.logo{
 .demo-page{
   margin-top: -40px;
   padding: 0;
+  padding-bottom: 40px;
   background: #ddf1f1;
 }
 

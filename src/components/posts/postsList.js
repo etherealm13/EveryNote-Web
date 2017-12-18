@@ -17,8 +17,8 @@ class PostsList extends Component {
   componentWillMount() {
     if (this.props.authenticated) {
       this.props.fetchPosts();
+      this.props.resetMultiSelect(this.props.multiselect);
     }
-    this.props.resetMultiSelect(this.props.multiselect);
     window.scroll(0,0);
   }
 

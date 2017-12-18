@@ -36,7 +36,7 @@ export function checkAuth() {
         if(!user.emailVerified){
             firebase.auth().signOut()
             .then(() => {
-              return emailUnVerified(dispatch);
+              dispatch(emailUnVerified());
             })
         }
         dispatch({ type: USER_LOGGED_IN, payload: user });
@@ -51,8 +51,8 @@ export function verifyEmail(code) {
   return (dispatch) => {
      firebase.auth().applyActionCode(code)
     .then(() => {
-      logoutUser();
       dispatch({ type: EMAIL_VERIFIED });
+      logoutUser();
     })
   };
 }
@@ -100,17 +100,8 @@ export function loginUser(email, password) {
     dispatch({ type: LOGIN_USER });
     return firebase.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
-          loginUserSuccess(dispatch, user);
-          if (!user.emailVerified){
-              firebase.auth().signOut()
-              .then(() => {
-                return emailUnVerified(dispatch);
-              })
-          }
-      })
-    .catch((error) => {
-      return loginUserFail(dispatch, error.message);
-    });
+          dispatch(loginUserSuccess(user));
+        })
   };
 }
 
@@ -119,76 +110,91 @@ export function signUpUser(email, password) {
     dispatch({ type: SIGN_UP_USER });
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        signUpUserSuccess(dispatch, user);
-        sendEmailLink(user);
+          dispatch(signUpUserSuccess(user));
+          dispatch(sendEmailLink(user));
       })
-      .catch((error) => {
-        return signUpUserFail(dispatch, error.message);
-      });
   };
 }
 
-export function signUpUserSuccess(dispatch, user) {
-  dispatch({ type: SIGN_UP_USER_SUCCESS, payload: user });
-  hashHistory.push('/signup-success');
+export function signUpUserSuccess(user) {
+  return (dispatch) => {
+    dispatch({ type: SIGN_UP_USER_SUCCESS, payload: user });
+    hashHistory.push('/signup-success');
+  }
 }
 
-export function signUpUserFail(dispatch, error) {
-  dispatch({
-    type: SIGN_UP_USER_FAIL,
-    payload: error
-  });
-}
-
-
-export function loginUserSuccess(dispatch, user) {
-  dispatch({
-    type: LOGIN_USER_SUCCESS,
-    payload: user
-  });
+export function signUpUserFail(error) {
+  return (dispatch) => {
+    dispatch({
+      type: SIGN_UP_USER_FAIL,
+      payload: error
+    });
+  }
 }
 
 
-export function loginUserFail(dispatch, error) {
-  dispatch({
-    type: LOGIN_USER_FAIL,
-    payload: error
-  });
+export function loginUserSuccess(user) {
+  return (dispatch) => {
+    dispatch({
+      type: LOGIN_USER_SUCCESS,
+      payload: user
+    });
+    if (!user.emailVerified){
+      firebase.auth().signOut()
+      .then(() => {
+        dispatch(emailUnVerified());
+      })
+    // dispatch(loginUserFail(error.message));
+    }
+  }
+}
+
+
+export function loginUserFail(error) {
+  return (dispatch) => {
+    dispatch({
+      type: LOGIN_USER_FAIL,
+      payload: error
+    });
+  }
 }
 
 export function logoutUser() {
   return (dispatch) => {
     firebase.auth().signOut()
     .then(() => {
-      return logoutUserSuccess(dispatch);
+      dispatch(logoutUserSuccess());
     })
-    .catch((error) => {
-      return logoutUserFail(dispatch, error.message);
-    });
   };
 }
 
 
-export function logoutUserSuccess(dispatch) {
-  dispatch({
-    type: LOGOUT_USER_SUCCESS
-  });
-  hashHistory.push('/');
+export function logoutUserSuccess() {
+  return (dispatch) => {
+    dispatch({
+      type: LOGOUT_USER_SUCCESS
+    });
+    hashHistory.push('/');
+  }
 }
 
-export function emailUnVerified(dispatch) {
-  dispatch({
-    type: LOGOUT_USER_SUCCESS
-  });
-  hashHistory.push('/verify-email');
+export function emailUnVerified() {
+  return (dispatch) => {
+    dispatch({
+      type: LOGOUT_USER_SUCCESS
+    });
+    hashHistory.push('/verify-email');
+  }
 }
 
 
-export function logoutUserFail(dispatch, error) {
-  dispatch({
-    type: LOGOUT_USER_FAIL,
-    payload: error
-  });
+export function logoutUserFail(error) {
+  return (dispatch) => {
+    dispatch({
+      type: LOGOUT_USER_FAIL,
+      payload: error
+    });
+  }
 }
 
 export function resetPassword(email) {
@@ -196,9 +202,7 @@ export function resetPassword(email) {
     dispatch({ type: RESET_PASSWORD_REQUESTED });
     return firebase.auth().sendPasswordResetEmail(email).then(function(response) {
       // Email sent.
-    }).catch(function(error) {
-      // An error happened.
-    });
+    })
   };
 }
 

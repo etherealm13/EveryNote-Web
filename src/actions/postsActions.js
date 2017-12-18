@@ -96,17 +96,25 @@ export function addNoteFail(dispatch, error) {
 
 export function fetchPosts() {
   const { currentUser } = firebase.auth();
-  if(currentUser.emailVerified){
-    return (dispatch) => {
-      dispatch({ type: FETCH_POSTS });
-      return firebase.database().ref(`/users/${currentUser.uid}/posts`)
-      .once('value', snapshot => {
-        dispatch({ type: FETCH_POSTS_SUCCESS, payload: snapshot.val() });
-        dispatch({ type: RESET_SELECTED_COUNT });
-      });
-    };
+  if(currentUser){
+    if(currentUser.emailVerified){
+      return (dispatch) => {
+        dispatch({ type: FETCH_POSTS });
+        return firebase.database().ref(`/users/${currentUser.uid}/posts`)
+        .once('value', snapshot => {
+          dispatch({ type: FETCH_POSTS_SUCCESS, payload: snapshot.val() });
+          dispatch({ type: RESET_SELECTED_COUNT });
+        });
+      };
+    }
+    hashHistory.push('/verify-email');
+    return {
+      type: ADD_NOTE_FAIL
+    }
   }
-  hashHistory.push('/verify-email');
+  return {
+    type: ADD_NOTE_FAIL
+  }
 }
 
 export function getPostDetails(id, number) {
