@@ -95,6 +95,13 @@ class LoginForm extends Component {
             <Link to="/reset-password" className="pull-right">Forgot password ?</Link>
           </div>
         </form>
+        <div className="form-signin demo-link">
+        <Link to="/demo">
+        Learn More</Link>
+        <p>
+        EveryNote &copy; 2017
+        </p>
+        </div>
       </div>
     );
   }

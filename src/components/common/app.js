@@ -13,23 +13,23 @@ class App extends Component {
     componentWillMount() {
         // Firebase configuration
         
-        const config = {
-            apiKey: 'AIzaSyAZGghgaxoX5vN_YCjMjVi5IMEfam1as1o',
-            authDomain: 'everynote-1e6a4.firebaseapp.com',
-            databaseURL: 'https://everynote-1e6a4.firebaseio.com',
-            projectId: 'everynote-1e6a4',
-            // storageBucket: 'everynote-1e6a4.appspot.com',
-            messagingSenderId: '631530737487'
-        };
-
         // const config = {
-        //     apiKey: "AIzaSyAv9GVVoO7Jc9k93BWRH1FXSnj4NLw5dac",
-        //     authDomain: "everynote-test-1.firebaseapp.com",
-        //     databaseURL: "https://everynote-test-1.firebaseio.com",
-        //     projectId: "everynote-test-1",
-        //     storageBucket: "",
-        //     messagingSenderId: "437149861632"
+        //     apiKey: 'AIzaSyAZGghgaxoX5vN_YCjMjVi5IMEfam1as1o',
+        //     authDomain: 'everynote-1e6a4.firebaseapp.com',
+        //     databaseURL: 'https://everynote-1e6a4.firebaseio.com',
+        //     projectId: 'everynote-1e6a4',
+        //     // storageBucket: 'everynote-1e6a4.appspot.com',
+        //     messagingSenderId: '631530737487'
         // };
+
+        const config = {
+            apiKey: "AIzaSyAv9GVVoO7Jc9k93BWRH1FXSnj4NLw5dac",
+            authDomain: "everynote-test-1.firebaseapp.com",
+            databaseURL: "https://everynote-test-1.firebaseio.com",
+            projectId: "everynote-test-1",
+            storageBucket: "",
+            messagingSenderId: "437149861632"
+        };
         
         firebase.initializeApp(config);
     }

@@ -120,6 +120,33 @@ img.logo{
   font-size: 13px;
 }
 
+.demo-link{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.demo-link a{
+    font-size: 18px;
+    color: #066158 !important;
+    width: 100%;
+    display: inline-block;
+    padding: 5px 20px;
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+}
+
+.demo-link p{
+    font-size: 10px;
+    /*color: #066158 !important;*/
+    width: 100%;
+    display: inline-block;
+    padding: 5px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .signup-link{
   margin-top: 10px;
   text-align: center;
@@ -321,8 +348,9 @@ img.logo{
     margin-left: -15px;
 }
 
-.lead{
-  font-size: 18px !important;
+.demo-page .lead{
+  font-size: 16px !important;
+  line-height: 1.8;
 }
 
 .add-note-fab{
@@ -717,6 +745,39 @@ img.logo{
 }
 
 
+
+
+/*demo page*/
+
+.demo-page{
+  margin-top: -40px;
+  padding: 0;
+}
+
+.demo-page hr{
+  border-top: 1px solid #ccc;
+}
+
+.demo-page .logo {
+  padding: 0 5px;
+  width: 40px;
+  height: 52px;
+  margin-left: 0;
+}
+
+.demo-page .row{
+  padding: 0 15px;
+  margin: 0;
+}
+
+.demo-page .jumbotron{
+  padding: 30px;
+  background: #f9fbfb;
+}
+
+
+
+
 @media screen and (max-device-width: 319px) {
   body {
     padding-top: 10px;
@@ -776,6 +837,15 @@ img.logo{
 @media screen and (min-device-width: 320px ) and (max-device-width: 480px) {
   body {
     padding-top: 10px;
+  }
+
+  .demo-page .logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .demo-page .jumbotron .lead {
+    text-align: justify;
   }
 
   .navbar-brand{
@@ -946,3 +1016,4 @@ img.logo{
     font-size: 12px;
   }
 }
+
