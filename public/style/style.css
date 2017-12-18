@@ -352,11 +352,6 @@ img.logo{
     margin-left: -15px;
 }
 
-.demo-page .lead{
-  font-size: 16px !important;
-  line-height: 1.8;
-}
-
 .add-note-fab{
     bottom: 6rem;
     position: fixed;
@@ -759,6 +754,11 @@ img.logo{
   background: #ddf1f1;
 }
 
+.demo-page .lead{
+  font-size: 16px !important;
+  line-height: 1.8;
+}
+
 .demo-page .text-muted{
   color: #343435;
 }
@@ -802,12 +802,16 @@ img.logo{
 }
 
 
+/*media queries*/
 
 @media screen and (max-device-width: 319px) {
   body {
     padding-top: 10px;
   }
 
+  .demo-page .row .mtodo{
+    height: 400px;
+  }
 
   .todo-component-wrapper{
     margin: 20px auto;
@@ -871,6 +875,10 @@ img.logo{
 
   .demo-page .jumbotron .lead {
     text-align: justify;
+  }
+
+  .demo-page .row .mtodo{
+    height: 400px;
   }
 
   .navbar-brand{
