@@ -52,7 +52,7 @@ const DemoPage = () => {
             <p className="lead">Our Progressive Web App uses modern technologies to provide optimal user experience and secure access across devices and browsers.</p>
           </div>
           <div className="col-md-5">
-            <img className="featurette-image img-responsive center-block" src="./assets/mobile.png" alt="Generic placeholder" />
+            <img className="featurette-image img-responsive center-block mtodo" src="./assets/mobile.png" alt="Generic placeholder" />
           </div>
       </div>
     </div>
