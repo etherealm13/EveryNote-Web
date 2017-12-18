@@ -94,6 +94,8 @@ class LoginForm extends Component {
             <Link to="/signup" className="pull-left">I don't have an account ?</Link>
             <Link to="/reset-password" className="pull-right">Forgot password ?</Link>
           </div>
+          <div className="clearfix">
+          </div>
         </form>
         <div className="form-signin demo-link">
           <Link to="/demo">Learn More</Link>
