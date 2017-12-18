@@ -28,10 +28,7 @@ class SignUpForm extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
     if (this.props.email !== '' && this.props.password !== '') {
-      this.props.signUpUser(this.props.email, this.props.password)
-      .then(() => {
-        this.context.router.push('/signup-success');
-      });
+      this.props.signUpUser(this.props.email, this.props.password);
     }
   }
   renderButton() {

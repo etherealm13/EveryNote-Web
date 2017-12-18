@@ -130,6 +130,7 @@ export function signUpUser(email, password) {
 
 export function signUpUserSuccess(dispatch, user) {
   dispatch({ type: SIGN_UP_USER_SUCCESS, payload: user });
+  hashHistory.push('/signup-success');
 }
 
 export function signUpUserFail(dispatch, error) {
