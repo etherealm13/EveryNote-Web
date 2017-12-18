@@ -70,6 +70,9 @@ class ResetPasswordRequested extends Component {
             <Link to="/login" className="pull-right">Back to Login</Link>
           </div>
         </form>
+        <div className="form-signin demo-link">
+          <p>EveryNote &copy; 2017</p>
+        </div>
       </div>
     );
   }

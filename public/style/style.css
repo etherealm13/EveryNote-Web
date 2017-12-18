@@ -62,6 +62,11 @@ img.logo{
   border-color: #009688 !important;
 }
 
+.btn-success:hover, .btn-danger:hover, .btn-warning:hover {
+  background: #127168 !important;
+  border-color: #acb7b6 !important;
+}
+
 .gradient-text {
   background: -webkit-linear-gradient(#5dd38c, #009688);
   -webkit-background-clip: text;
@@ -752,6 +757,15 @@ img.logo{
 .demo-page{
   margin-top: -40px;
   padding: 0;
+  background: #ddf1f1;
+}
+
+.demo-page .text-muted{
+  color: #343435;
+}
+
+.demo-page .row.featurette .featurette-heading{
+  color: #009688;
 }
 
 .demo-page hr{
@@ -772,9 +786,17 @@ img.logo{
 
 .demo-page .jumbotron{
   padding: 30px;
-  background: #f9fbfb;
+  background: #f5f5f5;
 }
 
+.demo-page .jumbotron h1{
+  color: #009688;
+}
+
+.demo-page .jumbotron h3{
+  margin-top: 10px;
+  color: #555;
+}
 
 
 
