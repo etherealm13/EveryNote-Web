@@ -100,8 +100,10 @@ export function loginUser(email, password) {
     dispatch({ type: LOGIN_USER });
     return firebase.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
-          dispatch(loginUserSuccess(user));
-        })
+      dispatch(loginUserSuccess(user));
+    }).catch((error) => {
+      dispatch(loginUserFail( error.message));
+    });
   };
 }
 
@@ -112,7 +114,10 @@ export function signUpUser(email, password) {
       .then((user) => {
           dispatch(signUpUserSuccess(user));
           dispatch(sendEmailLink(user));
-      })
+      }).catch((error) => {
+          dispatch(signUpUserFail(error.message));
+      });
+
   };
 }
 
@@ -144,7 +149,9 @@ export function loginUserSuccess(user) {
       .then(() => {
         dispatch(emailUnVerified());
       })
-    // dispatch(loginUserFail(error.message));
+      .catch((error) => {
+        dispatch(loginUserFail(error.message));
+      });
     }
   }
 }
