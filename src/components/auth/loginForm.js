@@ -99,6 +99,7 @@ class LoginForm extends Component {
         </form>
         <div className="form-signin demo-link">
           <Link to="/demo">Learn More</Link>
+          <p>EveryNote &copy; 2017</p>
         </div>
       </div>
     );

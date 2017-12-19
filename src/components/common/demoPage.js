@@ -55,6 +55,32 @@ const DemoPage = () => {
             <img className="featurette-image img-responsive center-block mtodo" src="./assets/mobile.png" alt="Generic placeholder" />
           </div>
       </div>
+
+      <div className="page-footer">
+      <div className="social-media-links">
+        <a target="_blank" href="https://stackoverflow.com/users/6763126/etherealm" title="stackoverflow" rel="nofollow noopener noreferrer me">
+          <img className="so-icon" alt="stackoverflow" src="assets/so-logo-bw.png" />
+        </a>
+      
+        <a target="_blank" href="https://www.linkedin.com/in/alankaranand/" title="linkedin" rel="nofollow noopener noreferrer me">
+          <img className="ln-icon" alt="linkedin" src="assets/ln-logo-bw.png" />
+        </a>
+        
+        <a target="_blank" href="https://github.com/etherealm13" title="github" rel="nofollow noopener noreferrer me">
+          <img className="gt-icon" alt="github" src="assets/gt-logo-bw.png" />
+        </a>
+        
+        <a className="hidden-sm hidden-md hidden-lg" target="_blank" href="whatsapp://send?text=Hey checkout this cool web app for storing notes - https://everynote-1e6a4.firebaseapp.com/" data-action="share/whatsapp/share" rel="nofollow noopener noreferrer me">
+          <img className="fb-icon" alt="whatsapp" src="assets/whatsapp-logo-bw.png" />
+        </a>
+        <a target="_blank" className="hidden-xs" href="https://web.whatsapp.com/send?text=Hey checkout this cool web app for storing notes - https://everynote-1e6a4.firebaseapp.com/" rel="nofollow noopener noreferrer me">
+          <img className="fb-icon" alt="whatsapp web" src="assets/whatsapp-logo-bw.png" />
+        </a>
+      </div>
+      <div className="copyright-text">Created with <i className="heart-symbol">&hearts;</i> by Alankar Anand
+      </div>
+    </div>
+
     </div>
   );
 };
