@@ -70,10 +70,10 @@ const DemoPage = () => {
           <img className="gt-icon" alt="github" src="assets/gt-logo-bw.png" />
         </a>
         
-        <a className="hidden-sm hidden-md hidden-lg" target="_blank" href="whatsapp://send?text=Hey checkout this cool web app for storing notes - https://everynote-1e6a4.firebaseapp.com/" data-action="share/whatsapp/share" rel="nofollow noopener noreferrer me">
+        <a className="hidden-sm hidden-md hidden-lg" href="whatsapp://send?text=Hey%20checkout%20this%20cool%20web%20app%20for%20storing%20notes%20and%20todo%20lists%20-%20https%3A%2F%2Feverynote-1e6a4.firebaseapp.com%2F%23%2Fdemo" rel="nofollow noopener noreferrer me">
           <img className="fb-icon" alt="whatsapp" src="assets/whatsapp-logo-bw.png" />
         </a>
-        <a target="_blank" className="hidden-xs" href="https://web.whatsapp.com/send?text=Hey checkout this cool web app for storing notes - https://everynote-1e6a4.firebaseapp.com/" rel="nofollow noopener noreferrer me">
+        <a target="_blank" className="hidden-xs" href="https://web.whatsapp.com/send?text=Hey checkout this cool web app for storing notes - https://everynote-1e6a4.firebaseapp.com/#/demo" rel="nofollow noopener noreferrer me">
           <img className="fb-icon" alt="whatsapp web" src="assets/whatsapp-logo-bw.png" />
         </a>
       </div>

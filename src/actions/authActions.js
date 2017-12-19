@@ -52,6 +52,8 @@ export function verifyEmail(code) {
      firebase.auth().applyActionCode(code)
     .then(() => {
       dispatch({ type: EMAIL_VERIFIED });
+      // To remove code from Params
+      // window.history.replaceState({}, document.title, "/");
       logoutUser();
     })
   };
