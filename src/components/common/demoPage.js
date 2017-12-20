@@ -20,12 +20,12 @@ const DemoPage = () => {
 
       <div className="row featurette">
           <div className="col-md-7">
-            <h3 className="featurette-heading">Problem Remembering things ? <span className="text-muted">Use Store Notes</span></h3>
+            <h3 className="featurette-heading">Problem Remembering things ? <span className="text-muted">Store Notes</span></h3>
             <p className="lead">With our App, you can Store, Edit and Manage Notes.
              The Colorful cards design adds a nostalgic touch to the traditional notepad.</p>
           </div>
           <div className="col-md-5">
-            <img className="featurette-image img-responsive center-block" src="./assets/list.png" alt="Generic placeholder" />
+            <img className="featurette-image img-responsive center-block" src="./assets/list1.jpg" alt="Generic placeholder" />
           </div>
       </div>
 
