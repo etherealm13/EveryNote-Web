@@ -24,8 +24,6 @@ const INITIAL_STATE = {
   post: {
     title: '',
     description: '',
-    user: null,
-    authenticated: null,
     error: '',
     loading: false,
     editing: false,

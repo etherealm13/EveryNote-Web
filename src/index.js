@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 // common files
 import App from './components/common/app';
 import PageNotFound from './components/common/pageNotFound';
+import DemoPage from './components/common/demoPage';
 import RequireAuth from './components/common/require_auth';
 
 //auth files
@@ -48,6 +49,7 @@ ReactDOM.render(
         
         
 
+        <Route path="/demo" component={DemoPage} />
         <Route path="/signup" component={SignUpForm} />
         <Route path="/signup-success" component={SignUpSuccess} />
         <Route path="/new-password" component={ResetPassword} />

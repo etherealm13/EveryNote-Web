@@ -32,8 +32,8 @@ const INITIAL_STATE = {
     password: '',
     newPassword: '',
     confirmPassword: '',
-    user: null,
-    authenticated: null,
+    user: {},
+    authenticated: false,
     error: '',
     loading: false
   }
@@ -86,9 +86,9 @@ export default (state = INITIAL_STATE.auth, action) => {
     case USER_LOGGED_IN:
       return { ...state, loading: false, authenticated: true, user: action.payload };
     case USER_LOGGED_OUT:
-      return { ...state, loading: false, authenticated: false };
+      return { ...INITIAL_STATE.auth };
     case LOGOUT_USER_SUCCESS:
-      return { ...state, authenticated: false, user: null };
+      return { ...INITIAL_STATE.auth, authenticated: false };
     case LOGOUT_USER_FAIL:
       return { ...state };
     default:

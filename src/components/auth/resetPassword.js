@@ -87,6 +87,9 @@ class ResetPassword extends Component {
                 </button>
               </div>
         </form>
+        <div className="form-signin demo-link">
+          <p>EveryNote &copy; 2017</p>
+        </div>
       </div>
   );
   }
